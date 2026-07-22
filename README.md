@@ -17,7 +17,8 @@ npm run build
 npm run storybook
 ```
 
-Storybook: http://localhost:6006
+- Local Storybook: http://localhost:6006
+- Hosted Storybook: https://heerashreer-7374.github.io/dre-design-system/
 
 ## Usage
 
