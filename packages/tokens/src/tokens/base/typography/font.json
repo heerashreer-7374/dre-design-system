@@ -1,0 +1,130 @@
+{
+  "font": {
+    "family": {
+      "primary": {
+        "$type": "fontFamily",
+        "$value": "Zoho Puvi, system-ui, sans-serif"
+      }
+    },
+    "weight": {
+      "thin": {
+        "$type": "fontWeight",
+        "$value": 100
+      },
+      "extraLight": {
+        "$type": "fontWeight",
+        "$value": 200
+      },
+      "light": {
+        "$type": "fontWeight",
+        "$value": 300
+      },
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semiBold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      },
+      "extraBold": {
+        "$type": "fontWeight",
+        "$value": 800
+      },
+      "black": {
+        "$type": "fontWeight",
+        "$value": 900
+      }
+    }
+  },
+  "typography": {
+    "label1": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "20px"
+      }
+    },
+    "label2": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "18px"
+      }
+    },
+    "label3": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "14px"
+      }
+    },
+    "body1": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "20px"
+      }
+    },
+    "body2": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "18px"
+      }
+    },
+    "body3": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "14px"
+      }
+    },
+    "caption1": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "10px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "12px"
+      }
+    },
+    "headingH2": {
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": "58px"
+      }
+    }
+  }
+}

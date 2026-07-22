@@ -1,0 +1,61 @@
+{
+  "source": "figma:UnFbmt5yovBqr4tBNjuNx9",
+  "atoms": [
+    "button",
+    "checkbox",
+    "radio",
+    "toggle",
+    "input",
+    "badge",
+    "tooltip",
+    "toast",
+    "tab-item",
+    "accordion",
+    "scrollbar"
+  ],
+  "molecules": [
+    "button-group",
+    "checkbox-group",
+    "radio-group",
+    "toggle-group",
+    "tab-group",
+    "toast-group",
+    "input-group",
+    "dropdown-group",
+    "popover-group",
+    "accordion-group"
+  ],
+  "organisms": [
+    "modal",
+    "top-bar",
+    "secondary-top-bar",
+    "left-pane",
+    "right-pane",
+    "bottom-pane"
+  ],
+  "button": {
+    "figmaNodeId": "12002:17139",
+    "variants": {
+      "hierarchy": [
+        "primary",
+        "secondary",
+        "ghost"
+      ],
+      "size": [
+        "xsmall",
+        "small",
+        "medium"
+      ],
+      "appearance": [
+        "light",
+        "dark"
+      ],
+      "icon": [
+        "false",
+        "leading",
+        "trailing",
+        "only"
+      ]
+    }
+  }
+}

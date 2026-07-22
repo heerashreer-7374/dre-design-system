@@ -1,0 +1,563 @@
+{
+  "source": "figma:UnFbmt5yovBqr4tBNjuNx9 / \ud83e\uddf1 Colors",
+  "intro": "Our design system leverages a purposeful set of color styles as the perfect starting point for any brand or project. When it comes to color, contrast is critical for ensuring text is legible. We've added WCAG 2.1 contrast ratios to our color system so you can make sure you're designing with accessibility in mind.",
+  "primaryNote": "These are the main colors that make up the majority of the colors used in the design system.",
+  "sections": [
+    {
+      "title": "Primary colors",
+      "noteKey": "primaryNote",
+      "scales": [
+        "Blue",
+        "Grey Light",
+        "Grey Dark",
+        "Error",
+        "Warning",
+        "Success"
+      ]
+    },
+    {
+      "title": "Secondary colors",
+      "scales": [
+        "Violet",
+        "Teal"
+      ]
+    }
+  ],
+  "scales": {
+    "Blue": {
+      "description": "The primary blue palette used for interactive elements, links, and brand expression.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#EEF5FF",
+          "contrast": "1.10"
+        },
+        {
+          "step": "50",
+          "hex": "#BDD8FE",
+          "contrast": "1.46"
+        },
+        {
+          "step": "100",
+          "hex": "#97C0FE",
+          "contrast": "1.86"
+        },
+        {
+          "step": "200",
+          "hex": "#75ABFE",
+          "contrast": "2.33"
+        },
+        {
+          "step": "300",
+          "hex": "#5296FD",
+          "contrast": "2.94"
+        },
+        {
+          "step": "400",
+          "hex": "#2F82FD",
+          "contrast": "AA 3.7"
+        },
+        {
+          "step": "500",
+          "hex": "#0D6DFD",
+          "contrast": "AA 4.54"
+        },
+        {
+          "step": "600",
+          "hex": "#025BE1",
+          "contrast": "AA 5.86"
+        },
+        {
+          "step": "700",
+          "hex": "#024CBC",
+          "contrast": "AAA 7.60"
+        },
+        {
+          "step": "800",
+          "hex": "#023D96",
+          "contrast": "AAA 9.95"
+        },
+        {
+          "step": "900",
+          "hex": "#012E71",
+          "contrast": "AAA 12.88"
+        },
+        {
+          "step": "1000",
+          "hex": "#051335",
+          "contrast": "AAA 18.24"
+        }
+      ]
+    },
+    "Grey Light": {
+      "description": "A neutral light-grey scale for backgrounds, surfaces, borders, and subtle elements.",
+      "swatches": [
+        {
+          "step": "30",
+          "hex": "#F7F7F9",
+          "contrast": "1.07"
+        },
+        {
+          "step": "40",
+          "hex": "#F3F3F6",
+          "contrast": "1.11"
+        },
+        {
+          "step": "50",
+          "hex": "#E6E8ED",
+          "contrast": "1.23"
+        },
+        {
+          "step": "100",
+          "hex": "#D6D8E1",
+          "contrast": "1.42"
+        },
+        {
+          "step": "200",
+          "hex": "#BDC0CF",
+          "contrast": "1.81"
+        },
+        {
+          "step": "300",
+          "hex": "#ADB1C3",
+          "contrast": "2.13"
+        },
+        {
+          "step": "400",
+          "hex": "#9CA1B7",
+          "contrast": "2.56"
+        },
+        {
+          "step": "500",
+          "hex": "#8C92AC",
+          "contrast": "AA 3.1"
+        },
+        {
+          "step": "600",
+          "hex": "#727999",
+          "contrast": "AA 4.3"
+        },
+        {
+          "step": "700",
+          "hex": "#5D6481",
+          "contrast": "AA 5.82"
+        },
+        {
+          "step": "800",
+          "hex": "#4B5067",
+          "contrast": "AAA 7.95"
+        },
+        {
+          "step": "900",
+          "hex": "#383C4D",
+          "contrast": "AAA 10.93"
+        },
+        {
+          "step": "1000",
+          "hex": "#252834",
+          "contrast": "AAA 14.67"
+        },
+        {
+          "step": "1100",
+          "hex": "#13141A",
+          "contrast": "AAA 18.38"
+        }
+      ]
+    },
+    "Grey Dark": {
+      "description": "A neutral dark-grey scale for text, icons, and surfaces in dark mode.",
+      "swatches": [
+        {
+          "step": "20",
+          "hex": "#F6F6F7",
+          "contrast": "1.08"
+        },
+        {
+          "step": "40",
+          "hex": "#E3E4E6",
+          "contrast": "1.27"
+        },
+        {
+          "step": "50",
+          "hex": "#D9DBDD",
+          "contrast": "1.39"
+        },
+        {
+          "step": "100",
+          "hex": "#C6C8CD",
+          "contrast": "1.67"
+        },
+        {
+          "step": "200",
+          "hex": "#B3B6BC",
+          "contrast": "2.03"
+        },
+        {
+          "step": "300",
+          "hex": "#A0A4AB",
+          "contrast": "2.50"
+        },
+        {
+          "step": "400",
+          "hex": "#8D929A",
+          "contrast": "AA 3.1"
+        },
+        {
+          "step": "500",
+          "hex": "#7A7F89",
+          "contrast": "AA 4.0"
+        },
+        {
+          "step": "600",
+          "hex": "#696D76",
+          "contrast": "AA 5.19"
+        },
+        {
+          "step": "700",
+          "hex": "#575B62",
+          "contrast": "AA 6.82"
+        },
+        {
+          "step": "800",
+          "hex": "#46494F",
+          "contrast": "AAA 9.03"
+        },
+        {
+          "step": "900",
+          "hex": "#212326",
+          "contrast": "AAA 15.75"
+        },
+        {
+          "step": "1000",
+          "hex": "#1B1B1E",
+          "contrast": "AAA 17.18"
+        },
+        {
+          "step": "1100",
+          "hex": "#111214",
+          "contrast": "AAA 18.74"
+        }
+      ]
+    },
+    "Error": {
+      "description": "The red danger palette for error messages, destructive actions, and critical states.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#F9E4E2",
+          "contrast": "1.22"
+        },
+        {
+          "step": "50",
+          "hex": "#F3C9C5",
+          "contrast": "1.50"
+        },
+        {
+          "step": "100",
+          "hex": "#EEAEA7",
+          "contrast": "1.87"
+        },
+        {
+          "step": "200",
+          "hex": "#E8948A",
+          "contrast": "2.32"
+        },
+        {
+          "step": "300",
+          "hex": "#E2796D",
+          "contrast": "2.92"
+        },
+        {
+          "step": "400",
+          "hex": "#DC5E50",
+          "contrast": "AA 3.6"
+        },
+        {
+          "step": "500",
+          "hex": "#D64333",
+          "contrast": "AA 4.5"
+        },
+        {
+          "step": "600",
+          "hex": "#BE3526",
+          "contrast": "AA 5.64"
+        },
+        {
+          "step": "700",
+          "hex": "#9E2C1F",
+          "contrast": "AAA 7.41"
+        },
+        {
+          "step": "800",
+          "hex": "#5F1A13",
+          "contrast": "AAA 12.78"
+        },
+        {
+          "step": "900",
+          "hex": "#3F120D",
+          "contrast": "AAA 16.11"
+        }
+      ]
+    },
+    "Warning": {
+      "description": "The yellow warning palette for caution banners, notifications, and non-blocking alerts.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#FCF4DF",
+          "contrast": "1.10"
+        },
+        {
+          "step": "50",
+          "hex": "#FAEABE",
+          "contrast": "1.19"
+        },
+        {
+          "step": "100",
+          "hex": "#F7DF9E",
+          "contrast": "1.31"
+        },
+        {
+          "step": "200",
+          "hex": "#F5D57E",
+          "contrast": "1.43"
+        },
+        {
+          "step": "300",
+          "hex": "#F2CA5D",
+          "contrast": "1.57"
+        },
+        {
+          "step": "400",
+          "hex": "#EFC03D",
+          "contrast": "1.71"
+        },
+        {
+          "step": "500",
+          "hex": "#EDB51D",
+          "contrast": "1.87"
+        },
+        {
+          "step": "600",
+          "hex": "#D29F11",
+          "contrast": "2.41"
+        },
+        {
+          "step": "700",
+          "hex": "#AF840E",
+          "contrast": "AA 3.4"
+        },
+        {
+          "step": "800",
+          "hex": "#8C6A0B",
+          "contrast": "AA 5.02"
+        },
+        {
+          "step": "900",
+          "hex": "#694F09",
+          "contrast": "AAA 7.71"
+        },
+        {
+          "step": "1000",
+          "hex": "#463506",
+          "contrast": "AAA 11.85"
+        }
+      ]
+    },
+    "Success": {
+      "description": "The green success palette for confirmation messages, positive states, and approvals.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#E7F4E7",
+          "contrast": "1.14"
+        },
+        {
+          "step": "50",
+          "hex": "#CEEAD0",
+          "contrast": "1.29"
+        },
+        {
+          "step": "100",
+          "hex": "#B6DFB8",
+          "contrast": "1.48"
+        },
+        {
+          "step": "200",
+          "hex": "#9ED4A1",
+          "contrast": "1.70"
+        },
+        {
+          "step": "300",
+          "hex": "#85CA89",
+          "contrast": "1.94"
+        },
+        {
+          "step": "400",
+          "hex": "#6DBF71",
+          "contrast": "2.25"
+        },
+        {
+          "step": "500",
+          "hex": "#55B45A",
+          "contrast": "2.60"
+        },
+        {
+          "step": "600",
+          "hex": "#459E4A",
+          "contrast": "AA 3.4"
+        },
+        {
+          "step": "700",
+          "hex": "#3A843D",
+          "contrast": "AA 4.62"
+        },
+        {
+          "step": "800",
+          "hex": "#2E6931",
+          "contrast": "AA 6.60"
+        },
+        {
+          "step": "900",
+          "hex": "#234F25",
+          "contrast": "AAA 9.47"
+        },
+        {
+          "step": "1000",
+          "hex": "#112712",
+          "contrast": "AAA 15.88"
+        }
+      ]
+    },
+    "Violet": {
+      "description": "Purple accent scale for discovery states, new features, and decorative elements.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#EFEDFC",
+          "contrast": "1.15"
+        },
+        {
+          "step": "50",
+          "hex": "#DFDAF8",
+          "contrast": "1.35"
+        },
+        {
+          "step": "100",
+          "hex": "#CFC8F5",
+          "contrast": "1.59"
+        },
+        {
+          "step": "200",
+          "hex": "#BFB5F1",
+          "contrast": "1.89"
+        },
+        {
+          "step": "300",
+          "hex": "#AFA3EE",
+          "contrast": "2.26"
+        },
+        {
+          "step": "400",
+          "hex": "#9F90EB",
+          "contrast": "2.74"
+        },
+        {
+          "step": "500",
+          "hex": "#8F7EE7",
+          "contrast": "AA 3.3"
+        },
+        {
+          "step": "600",
+          "hex": "#6A53DF",
+          "contrast": "AA 5.36"
+        },
+        {
+          "step": "700",
+          "hex": "#4528D7",
+          "contrast": "AAA 8.27"
+        },
+        {
+          "step": "800",
+          "hex": "#3720AC",
+          "contrast": "AAA 10.69"
+        },
+        {
+          "step": "900",
+          "hex": "#291881",
+          "contrast": "AAA 13.62"
+        },
+        {
+          "step": "1000",
+          "hex": "#1C1056",
+          "contrast": "AAA 16.69"
+        }
+      ]
+    },
+    "Teal": {
+      "description": "Blue-cyan scale for informational states, secondary links, and contextual highlights.",
+      "swatches": [
+        {
+          "step": "25",
+          "hex": "#E2EEF9",
+          "contrast": "1.18"
+        },
+        {
+          "step": "50",
+          "hex": "#C4DDF4",
+          "contrast": "1.40"
+        },
+        {
+          "step": "100",
+          "hex": "#A7CCEE",
+          "contrast": "1.68"
+        },
+        {
+          "step": "200",
+          "hex": "#89BBE9",
+          "contrast": "2.03"
+        },
+        {
+          "step": "300",
+          "hex": "#6CAAE3",
+          "contrast": "2.47"
+        },
+        {
+          "step": "400",
+          "hex": "#4F98DD",
+          "contrast": "AA 3.1"
+        },
+        {
+          "step": "500",
+          "hex": "#3187D8",
+          "contrast": "AA 3.8"
+        },
+        {
+          "step": "600",
+          "hex": "#2474BF",
+          "contrast": "AA 4.85"
+        },
+        {
+          "step": "700",
+          "hex": "#1E619F",
+          "contrast": "AA 6.43"
+        },
+        {
+          "step": "800",
+          "hex": "#184D7F",
+          "contrast": "AAA 8.73"
+        },
+        {
+          "step": "900",
+          "hex": "#123A5F",
+          "contrast": "AAA 11.69"
+        },
+        {
+          "step": "1000",
+          "hex": "#0C2740",
+          "contrast": "AAA 15.22"
+        }
+      ]
+    }
+  }
+}

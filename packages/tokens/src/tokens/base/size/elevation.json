@@ -1,0 +1,29 @@
+{
+  "elevation": {
+    "none": {
+      "$type": "shadow",
+      "$value": "none",
+      "$description": "Elevation 0 — Flat elements, no depth (inline content)"
+    },
+    "low": {
+      "$type": "shadow",
+      "$value": "0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)",
+      "$description": "Elevation 1 — Subtle lift for cards, list items on hover"
+    },
+    "medium": {
+      "$type": "shadow",
+      "$value": "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)",
+      "$description": "Elevation 2 — Floating elements like dropdowns, popovers"
+    },
+    "high": {
+      "$type": "shadow",
+      "$value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+      "$description": "Elevation 3 — Modals, dialogs, prominent overlays"
+    },
+    "overlay": {
+      "$type": "shadow",
+      "$value": "0 20px 25px -5px rgba(0,0,0,0.15), 0 8px 10px -5px rgba(0,0,0,0.08)",
+      "$description": "Elevation 4 — Toast messages, notifications, top-layer elements"
+    }
+  }
+}

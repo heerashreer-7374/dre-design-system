@@ -1,0 +1,618 @@
+{
+  "color": {
+    "text": {
+      "default": {
+        "$type": "color",
+        "$value": "#e3e4e6"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "#a0a4ab"
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "#696d76"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "#46494f"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "#111214"
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "#2f82fd"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#6dbf71"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#efc03d"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#dc5e50"
+      },
+      "information": {
+        "$type": "color",
+        "$value": "#4f98dd"
+      },
+      "discovery": {
+        "$type": "color",
+        "$value": "#9f90eb"
+      },
+      "on-bold": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "placeholder": {
+        "$type": "color",
+        "$value": "#575b62"
+      },
+      "label": {
+        "$type": "color",
+        "$value": "#c6c8cd"
+      },
+      "required": {
+        "$type": "color",
+        "$value": "#dc5e50"
+      },
+      "on-brand": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "badge": {
+        "neutral": {
+          "$type": "color",
+          "$value": "#c6c8cd"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "#55b45a"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "#dc5e50"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "#efc03d"
+        }
+      },
+      "tab": {
+        "active": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "inactive": {
+          "$type": "color",
+          "$value": "#7a7f89"
+        }
+      },
+      "nav": {
+        "active": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "inactive": {
+          "$type": "color",
+          "$value": "#7a7f89"
+        }
+      }
+    },
+    "link": {
+      "default": {
+        "$type": "color",
+        "$value": "#2f82fd"
+      },
+      "visited": {
+        "$type": "color",
+        "$value": "#9f90eb"
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "#5296fd"
+      }
+    },
+    "icon": {
+      "default": {
+        "$type": "color",
+        "$value": "#e3e4e6"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "#8d929a"
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "#696d76"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "#46494f"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "#111214"
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "#2f82fd"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#6dbf71"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#efc03d"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#dc5e50"
+      },
+      "information": {
+        "$type": "color",
+        "$value": "#4f98dd"
+      },
+      "discovery": {
+        "$type": "color",
+        "$value": "#9f90eb"
+      },
+      "on-bold": {
+        "$type": "color",
+        "$value": "#ffffff"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "#46494f"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "#575b62"
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "#696d76"
+      },
+      "bold": {
+        "$type": "color",
+        "$value": "#a0a4ab"
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "#2f82fd"
+      },
+      "focused": {
+        "$type": "color",
+        "$value": "#5296fd"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "#575b62"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#6dbf71"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#efc03d"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#dc5e50"
+      },
+      "information": {
+        "$type": "color",
+        "$value": "#4f98dd"
+      },
+      "discovery": {
+        "$type": "color",
+        "$value": "#9f90eb"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "#111214"
+      },
+      "divider": {
+        "$type": "color",
+        "$value": "#212326"
+      },
+      "input": {
+        "default": {
+          "$type": "color",
+          "$value": "#46494f"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#575b62"
+        },
+        "focused": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "#dc5e50"
+        }
+      },
+      "control": {
+        "default": {
+          "$type": "color",
+          "$value": "#575b62"
+        }
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "#2f82fd"
+      },
+      "tab": {
+        "active": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        }
+      }
+    },
+    "background": {
+      "page": {
+        "$type": "color",
+        "$value": "#111214"
+      },
+      "neutral": {
+        "default": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#212326"
+        },
+        "subtlest": {
+          "$type": "color",
+          "$value": "#252834"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#252834"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#383c4d"
+        }
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "#252834"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "rgba(12, 26, 12, 0.6)"
+      },
+      "input": {
+        "default": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        }
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "#212326"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "#e3e4e6"
+      },
+      "brand": {
+        "default": {
+          "$type": "color",
+          "$value": "#0d6dfd"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#5296fd"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#012e71"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "#051335"
+        }
+      },
+      "success": {
+        "subtle": {
+          "$type": "color",
+          "$value": "#112712"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#197b64"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "#55b45a"
+        }
+      },
+      "warning": {
+        "subtle": {
+          "$type": "color",
+          "$value": "#463506"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#edb51d"
+        }
+      },
+      "danger": {
+        "subtle": {
+          "$type": "color",
+          "$value": "#3f120d"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#d64333"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "#dc5e50"
+        }
+      },
+      "information": {
+        "subtle": {
+          "$type": "color",
+          "$value": "#051335"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#2474bf"
+        }
+      },
+      "discovery": {
+        "subtle": {
+          "$type": "color",
+          "$value": "#051335"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#6a53df"
+        }
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "#051335"
+      },
+      "code": {
+        "default": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        },
+        "gutter": {
+          "$type": "color",
+          "$value": "#212326"
+        },
+        "active-line": {
+          "$type": "color",
+          "$value": "#051335"
+        }
+      },
+      "toolbar": {
+        "$type": "color",
+        "$value": "#1b1b1e"
+      },
+      "tab-bar": {
+        "$type": "color",
+        "$value": "#1b1b1e"
+      },
+      "status-bar": {
+        "$type": "color",
+        "$value": "#111214"
+      },
+      "tooltip": {
+        "$type": "color",
+        "$value": "#383c4d"
+      },
+      "badge": {
+        "neutral": {
+          "$type": "color",
+          "$value": "#383c4d"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "#012e71"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "#112712"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "#3f120d"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "#463506"
+        }
+      },
+      "tab": {
+        "active": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        },
+        "inactive": {
+          "$type": "color",
+          "$value": "#111214"
+        }
+      },
+      "nav": {
+        "active": {
+          "$type": "color",
+          "$value": "#051335"
+        }
+      }
+    },
+    "action": {
+      "ghost": {
+        "hovered": {
+          "$type": "color",
+          "$value": "#252834"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#383c4d"
+        }
+      },
+      "toggle": {
+        "knob": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "track-off": {
+          "$type": "color",
+          "$value": "#46494f"
+        },
+        "track-on": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        }
+      },
+      "control": {
+        "checked": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "unchecked": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        }
+      },
+      "primary": {
+        "default": {
+          "$type": "color",
+          "$value": "#0d6dfd"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#2f82fd"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#5296fd"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#212326"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#012e71"
+        }
+      },
+      "secondary": {
+        "default": {
+          "$type": "color",
+          "$value": "#1b1b1e"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#252834"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#383c4d"
+        }
+      },
+      "danger": {
+        "default": {
+          "$type": "color",
+          "$value": "#d64333"
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "#dc5e50"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "#e2796d"
+        }
+      }
+    },
+    "feedback": {
+      "success": {
+        "default": {
+          "$type": "color",
+          "$value": "#197b64"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#112712"
+        }
+      },
+      "warning": {
+        "default": {
+          "$type": "color",
+          "$value": "#edb51d"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#463506"
+        }
+      },
+      "danger": {
+        "default": {
+          "$type": "color",
+          "$value": "#d64333"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#3f120d"
+        }
+      },
+      "information": {
+        "default": {
+          "$type": "color",
+          "$value": "#2474bf"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#051335"
+        }
+      },
+      "discovery": {
+        "default": {
+          "$type": "color",
+          "$value": "#6a53df"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#051335"
+        }
+      },
+      "neutral": {
+        "default": {
+          "$type": "color",
+          "$value": "#8d929a"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#383c4d"
+        }
+      }
+    }
+  }
+}

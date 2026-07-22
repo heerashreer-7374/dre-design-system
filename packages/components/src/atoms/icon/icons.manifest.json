@@ -1,0 +1,509 @@
+{
+  "source": "figma:UnFbmt5yovBqr4tBNjuNx9/Icons",
+  "icons": [
+    {
+      "name": "sparkles",
+      "slug": "sparkles",
+      "id": "10155:2342",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "loader",
+      "slug": "loader",
+      "id": "10155:2354",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "chevron-down",
+      "slug": "chevron-down",
+      "id": "10197:475",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "search",
+      "slug": "search",
+      "id": "10246:7",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "filter",
+      "slug": "filter",
+      "id": "10251:271",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "check",
+      "slug": "check",
+      "id": "10256:81",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "x",
+      "slug": "x",
+      "id": "10332:1895",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Arrow / Expand",
+      "slug": "arrow-expand",
+      "id": "10332:1965",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "trash-2",
+      "slug": "trash-2",
+      "id": "10332:1968",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Arrow down",
+      "slug": "arrow-down",
+      "id": "12102:1489",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Arrow right",
+      "slug": "arrow-right",
+      "id": "12102:1490",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Arrow left",
+      "slug": "arrow-left",
+      "id": "12102:1491",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "arrow up",
+      "slug": "arrow-up",
+      "id": "12102:1492",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "ci:option",
+      "slug": "cioption",
+      "id": "12102:1476",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "CMD",
+      "slug": "cmd",
+      "id": "12102:1477",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "SHIFT",
+      "slug": "shift",
+      "id": "12102:1478",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Inline diff",
+      "slug": "inline-diff",
+      "id": "12102:1460",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "split diff",
+      "slug": "split-diff",
+      "id": "12102:1461",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Diff",
+      "slug": "diff",
+      "id": "12102:1462",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Back",
+      "slug": "back",
+      "id": "12102:1463",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "workflow",
+      "slug": "workflow",
+      "id": "12102:1453",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "correct",
+      "slug": "correct",
+      "id": "12102:1454",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Fetch record",
+      "slug": "fetch-record",
+      "id": "12102:1455",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Days between",
+      "slug": "days-between",
+      "id": "12102:1456",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "alert",
+      "slug": "alert",
+      "id": "12102:1457",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "cancel submit",
+      "slug": "cancel-submit",
+      "id": "12102:1458",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Split",
+      "slug": "split",
+      "id": "12102:1430",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Code",
+      "slug": "code",
+      "id": "12102:1431",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Minimize",
+      "slug": "minimize",
+      "id": "12102:1432",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "More",
+      "slug": "more",
+      "id": "12102:1433",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Like",
+      "slug": "like",
+      "id": "12102:1435",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "edit",
+      "slug": "edit",
+      "id": "12102:1438",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "delete",
+      "slug": "delete",
+      "id": "12102:1439",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Close",
+      "slug": "close",
+      "id": "12102:1440",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Send",
+      "slug": "send",
+      "id": "12102:1434",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Unlike",
+      "slug": "unlike",
+      "id": "12102:1436",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Reset",
+      "slug": "reset",
+      "id": "12102:1437",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "minimize-2",
+      "slug": "minimize-2",
+      "id": "12102:459",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "message",
+      "slug": "message",
+      "id": "12102:1443",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Undo",
+      "slug": "undo",
+      "id": "12102:418",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Redo",
+      "slug": "redo",
+      "id": "12102:420",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "warning 1",
+      "slug": "warning-1",
+      "id": "12102:422",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Syntax ",
+      "slug": "syntax",
+      "id": "12102:1411",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Aruguments",
+      "slug": "aruguments",
+      "id": "12102:1412",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Zia-logo 1",
+      "slug": "zia-logo-1",
+      "id": "12102:1413",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Versions",
+      "slug": "versions",
+      "id": "12102:1414",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Pane Close",
+      "slug": "pane-close",
+      "id": "12102:1415",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Pane Close 1",
+      "slug": "pane-close-1",
+      "id": "12102:1416",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "zoom",
+      "slug": "zoom",
+      "id": "12102:1417",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Error",
+      "slug": "error",
+      "id": "12102:1418",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Warning",
+      "slug": "warning",
+      "id": "12102:1419",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Play",
+      "slug": "play",
+      "id": "12102:1420",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Cloud Save",
+      "slug": "cloud-save",
+      "id": "12102:1421",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Paste",
+      "slug": "paste",
+      "id": "12102:1424",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Copy",
+      "slug": "copy",
+      "id": "12102:1425",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Finder",
+      "slug": "finder",
+      "id": "12102:1427",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Code 1",
+      "slug": "code-1",
+      "id": "12102:1428",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Settings",
+      "slug": "settings",
+      "id": "12102:1429",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Cut",
+      "slug": "cut",
+      "id": "12102:1426",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "vuesax/linear/code",
+      "slug": "vuesax-linear-code",
+      "id": "12213:27",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "cable",
+      "slug": "cable",
+      "id": "12422:16575",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "info",
+      "slug": "info",
+      "id": "12422:16581",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "function-square",
+      "slug": "function-square",
+      "id": "12466:693",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "smile",
+      "slug": "smile",
+      "id": "12468:2570",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "languages",
+      "slug": "languages",
+      "id": "12468:2572",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "File / File_Search",
+      "slug": "file-file_search",
+      "id": "12468:2574",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Text & Formatting/text bounding box",
+      "slug": "text-formatting-text-bounding-box",
+      "id": "12468:2587",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "scan-face",
+      "slug": "scan-face",
+      "id": "12476:4979",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Navigation / Globe",
+      "slug": "navigation-globe",
+      "id": "12476:4976",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "Detect obj",
+      "slug": "detect-obj",
+      "id": "12477:4985",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "vuesax/linear/password-check",
+      "slug": "vuesax-linear-password-check",
+      "id": "12478:5005",
+      "w": 20,
+      "h": 20
+    },
+    {
+      "name": "bell",
+      "slug": "bell",
+      "id": "12491:7250",
+      "w": 20,
+      "h": 20
+    }
+  ]
+}

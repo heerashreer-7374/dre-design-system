@@ -1,0 +1,67 @@
+{
+  "name": "@dre/components",
+  "version": "0.1.0",
+  "description": "DRE Design System Web Components (Lit)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "customElements": "custom-elements.json",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./button": {
+      "types": "./dist/atoms/button/button.d.ts",
+      "import": "./dist/atoms/button/button.js"
+    },
+    "./custom-elements.json": "./custom-elements.json"
+  },
+  "files": [
+    "dist",
+    "custom-elements.json",
+    "src"
+  ],
+  "scripts": {
+    "build": "npm run build:cem && tsc -p tsconfig.build.json",
+    "build:cem": "cem analyze --litelement --globs \"src/**/*.ts\" --exclude \"**/*.stories.ts\" --exclude \"**/*.test.ts\" --exclude \"**/*.figma.ts\"",
+    "dev": "storybook dev -p 6006 --no-open",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "echo 'no lint yet'",
+    "clean": "rm -rf dist storybook-static custom-elements.json"
+  },
+  "dependencies": {
+    "@dre/tokens": "0.1.0",
+    "lit": "^3.3.0"
+  },
+  "peerDependencies": {
+    "@lit/react": "^1.0.7",
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "@lit/react": { "optional": true },
+    "react": { "optional": true }
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@lit/react": "^1.0.7",
+    "@storybook/addon-a11y": "^9.0.15",
+    "@storybook/addon-docs": "^9.0.15",
+    "@storybook/addon-links": "^9.0.15",
+    "@storybook/web-components-vite": "^9.0.15",
+    "@types/react": "^19.1.8",
+    "happy-dom": "^18.0.1",
+    "react": "^19.1.0",
+    "storybook": "^9.0.15",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

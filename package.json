@@ -1,0 +1,32 @@
+{
+  "name": "dre-design-system",
+  "private": true,
+  "version": "0.0.0",
+  "description": "DRE Design System — Web Components, tokens, and Storybook for Zoho DRE IDE",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --filter=@dre/components",
+    "storybook": "npm run storybook -w @dre/components",
+    "build-storybook": "npm run build-storybook -w @dre/components",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.9.2"
+}
