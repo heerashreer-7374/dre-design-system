@@ -12,7 +12,7 @@
     "dev": "turbo run dev --filter=@dre/components",
     "storybook": "npm run storybook -w @dre/components",
     "build-storybook": "npm run build-storybook -w @dre/components",
-    "deploy-storybook": "npm run build-storybook && npx gh-pages -d packages/components/storybook-static -m 'deploy storybook'",
+    "deploy-storybook": "npm run build-storybook && npx gh-pages -d packages/components/storybook-static --nojekyll -t -m 'deploy storybook'",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
