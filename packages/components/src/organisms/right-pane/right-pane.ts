@@ -4,8 +4,8 @@ import { hostBase } from '../../shared/styles.js'
 import '../../atoms/icon/icon.js'
 
 /**
- * DRE Right Pane — Figma (`12726:50864`) / App Layout Composition.
- * Width 280 · header h44 pad 16×12 · title 14/`#13141a`.
+ * DRE Right Pane — Figma (`12726:50864`).
+ * Width 280 · header h44 · more + separator + pane-close.
  */
 @customElement('dre-right-pane')
 export class DreRightPane extends LitElement {
@@ -15,7 +15,7 @@ export class DreRightPane extends LitElement {
       :host {
         display: flex;
         flex-direction: column;
-        width: 280px;
+        width: 246px;
         height: 100%;
         min-height: 0;
         background: #ffffff;
@@ -44,7 +44,7 @@ export class DreRightPane extends LitElement {
         flex: 1;
         margin: 0;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 17px;
         color: #13141a;
         overflow: hidden;
@@ -56,6 +56,12 @@ export class DreRightPane extends LitElement {
         display: inline-flex;
         align-items: center;
         gap: 8px;
+      }
+
+      .sep {
+        width: 1px;
+        height: 20px;
+        background: #f3f3f6;
       }
 
       .icon-btn {
@@ -70,10 +76,12 @@ export class DreRightPane extends LitElement {
         align-items: center;
         justify-content: center;
         line-height: 0;
+        border-radius: 2px;
       }
 
       .icon-btn:hover {
         color: #13141a;
+        background: #f3f3f6;
       }
 
       .body {
@@ -82,10 +90,11 @@ export class DreRightPane extends LitElement {
         display: flex;
         flex-direction: column;
         min-height: 0;
+        background: #ffffff;
       }
 
       .footer {
-        border-top: 1px solid #e6e8ed;
+        background: #ffffff;
       }
 
       .footer:empty {
@@ -111,13 +120,14 @@ export class DreRightPane extends LitElement {
         <div class="actions">
           <slot name="actions">
             <button class="icon-btn" type="button" aria-label="More">
-              <dre-icon name="more" size="16"></dre-icon>
+              <dre-icon name="more" size="14"></dre-icon>
             </button>
           </slot>
           ${this.closable
             ? html`
-                <button class="icon-btn" type="button" aria-label="Close" @click=${this.#close}>
-                  <dre-icon name="pane-close" size="16"></dre-icon>
+                <span class="sep" aria-hidden="true"></span>
+                <button class="icon-btn" type="button" aria-label="Collapse pane" @click=${this.#close}>
+                  <dre-icon name="pane-close-1" size="16"></dre-icon>
                 </button>
               `
             : null}

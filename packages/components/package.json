@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "build": "npm run build:cem && tsc -p tsconfig.build.json",
-    "build:cem": "cem analyze --litelement --globs \"src/**/*.ts\" --exclude \"**/*.stories.ts\" --exclude \"**/*.test.ts\" --exclude \"**/*.figma.ts\"",
+    "build:cem": "cem analyze --litelement --globs \"src/**/*.ts\" --exclude \"**/*.stories.ts\" --exclude \"**/*.test.ts\" --exclude \"**/*.figma.ts\" --exclude \"**/monaco-editor/**\"",
     "dev": "storybook dev -p 6006 --no-open",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -36,15 +36,21 @@
   },
   "dependencies": {
     "@dre/tokens": "0.1.0",
-    "lit": "^3.3.0"
+    "@monaco-editor/loader": "^1.7.0",
+    "lit": "^3.3.0",
+    "monaco-editor": "^0.56.0"
   },
   "peerDependencies": {
     "@lit/react": "^1.0.7",
     "react": ">=18"
   },
   "peerDependenciesMeta": {
-    "@lit/react": { "optional": true },
-    "react": { "optional": true }
+    "@lit/react": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

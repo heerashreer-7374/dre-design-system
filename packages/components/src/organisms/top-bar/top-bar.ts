@@ -43,19 +43,14 @@ export class DreTopBar extends LitElement {
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
         height: 16px;
-        color: #13141a;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
+        line-height: 0;
       }
 
-      .brand-mark {
-        width: 18px;
+      .brand-logo {
+        display: block;
+        width: 60px;
         height: 16px;
-        border-radius: 3px;
-        background: linear-gradient(135deg, #0d6dfd 0%, #2f82fd 100%);
       }
 
       .divider {
@@ -159,7 +154,8 @@ export class DreTopBar extends LitElement {
   @property({ attribute: 'active-tab' })
   activeTab = ''
 
-  @property() brand = 'DRE'
+  /** Brand label used for accessible name; logo is the Deluge mark from Figma. */
+  @property() brand = 'Deluge'
 
   #select(id: string) {
     this.activeTab = id
@@ -180,7 +176,15 @@ export class DreTopBar extends LitElement {
       <header class="bar" part="bar">
         <div class="leading" part="leading">
           <slot name="leading">
-            <span class="brand"><span class="brand-mark" aria-hidden="true"></span>${this.brand}</span>
+            <span class="brand" role="img" aria-label=${this.brand}>
+              <img
+                class="brand-logo"
+                src=${new URL('../../assets/deluge-logo.svg', import.meta.url).href}
+                alt=""
+                width="60"
+                height="16"
+              />
+            </span>
           </slot>
           <span class="divider" aria-hidden="true"></span>
           <div class="tabs" part="tabs" role="tablist">

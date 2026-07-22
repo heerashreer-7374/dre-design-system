@@ -2,16 +2,13 @@ import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { hostBase } from '../../shared/styles.js'
 import '../../atoms/button/button.js'
+import '../../atoms/icon/icon.js'
 
 export type DreSecondaryTopBarType = 'code-editor' | 'visual-builder'
 
 /**
- * DRE Secondary Top Bar — maps to Figma Secondary Top Bar (`12726:51297`).
- *
- * @slot tools - Custom tool buttons (overrides defaults)
- * @slot trailing - Right-side actions
- * @fires dre-mode-change - Fired when Code/Flow tab changes
- * @fires dre-action - Fired for toolbar icon actions
+ * DRE Secondary Top Bar — Figma (`12726:51297`).
+ * Height 36 · tools left · Code/Flow center · actions right.
  */
 @customElement('dre-secondary-top-bar')
 export class DreSecondaryTopBar extends LitElement {
@@ -21,84 +18,112 @@ export class DreSecondaryTopBar extends LitElement {
       :host {
         display: block;
         width: 100%;
+        font-family: var(--dre-font-family-primary, 'Zoho Puvi', system-ui, sans-serif);
       }
 
       .bar {
         display: flex;
         align-items: center;
-        gap: var(--dre-spacer-12);
+        height: 36px;
         min-height: 36px;
-        padding: 0 var(--dre-spacer-12);
-        background: var(--dre-color-background-toolbar);
-        border-bottom: 1px solid var(--dre-color-border-divider);
-      }
-
-      .modes {
-        display: inline-flex;
-        gap: 2px;
-        padding: 2px;
-        border-radius: var(--dre-radius-small);
-        background: var(--dre-color-background-neutral-subtle);
-      }
-
-      .mode {
-        border: 0;
-        border-radius: var(--dre-radius-xsmall);
-        padding: 4px 10px;
-        background: transparent;
-        color: var(--dre-color-text-subtle);
-        font: inherit;
-        font-size: var(--dre-typography-label3-font-size, 12px);
-        cursor: pointer;
-      }
-
-      .mode[aria-pressed='true'] {
-        background: var(--dre-color-background-neutral-default);
-        color: var(--dre-color-text-default);
-        box-shadow: 0 0 0 1px var(--dre-color-border-subtle);
+        padding: 0 8px;
+        background: #ffffff;
+        border: 1px solid #e6e8ed;
+        border-radius: 4px;
+        box-sizing: border-box;
       }
 
       .tools {
         display: inline-flex;
         align-items: center;
-        gap: var(--dre-spacer-2);
-        flex: 1;
+        gap: 10px;
+        flex: 0 0 auto;
       }
 
       .tool {
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
         border: 0;
-        border-radius: var(--dre-radius-small);
+        padding: 0;
+        border-radius: 4px;
         background: transparent;
-        color: var(--dre-color-icon-subtle);
+        color: #5d6481;
         cursor: pointer;
-        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
       }
 
       .tool:hover {
-        background: var(--dre-color-action-ghost-hovered);
-        color: var(--dre-color-icon-default);
+        background: #f3f3f6;
+        color: #13141a;
       }
 
-      .unsaved {
-        font-size: var(--dre-typography-caption1-font-size, 10px);
-        color: var(--dre-color-text-warning);
+      .sep {
+        width: 1px;
+        height: 16px;
+        background: #d6d8e1;
+        flex: 0 0 auto;
+      }
+
+      .spacer {
+        flex: 1;
+        min-width: 8px;
+      }
+
+      .modes {
+        display: inline-flex;
+        align-items: stretch;
+        gap: 0;
+        padding: 2px;
+        border-radius: 4px;
+        background: #e6e8ed;
+        flex: 0 0 auto;
+      }
+
+      .mode {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border: 0;
+        border-radius: 2px;
+        padding: 4px 6px;
+        background: transparent;
+        color: #5d6481;
+        font: inherit;
+        font-size: 12px;
+        line-height: 14px;
+        cursor: pointer;
         white-space: nowrap;
+      }
+
+      .mode[aria-pressed='true'] {
+        background: #ffffff;
+        color: #0d6dfd;
       }
 
       .trailing {
         display: inline-flex;
         align-items: center;
-        gap: var(--dre-spacer-8);
-        margin-inline-start: auto;
+        gap: 8px;
+        flex: 0 0 auto;
+      }
+
+      .unsaved {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #5d6481;
+        white-space: nowrap;
       }
     `,
   ]
 
   @property({ reflect: true }) type: DreSecondaryTopBarType = 'code-editor'
   @property({ attribute: 'active-mode' }) activeMode: 'code' | 'flow' = 'code'
-  @property({ attribute: 'unsaved-text' }) unsavedText = ''
+  @property({ attribute: 'unsaved-text' }) unsavedText = '4 Unsaved changes'
   @property({ attribute: 'code-tab-text' }) codeTabText = 'Code'
   @property({ attribute: 'flow-tab-text' }) flowTabText = 'Flow'
   @property({ attribute: 'preview-text' }) previewText = 'Preview'
@@ -125,8 +150,45 @@ export class DreSecondaryTopBar extends LitElement {
   }
 
   override render() {
+    const isCode = this.type === 'code-editor'
+
     return html`
       <div class="bar" part="bar">
+        <div class="tools" part="tools">
+          <slot name="tools">
+            <button class="tool" type="button" title="Undo" @click=${() => this.#action('undo')}>
+              <dre-icon name="undo" size="14"></dre-icon>
+            </button>
+            <button class="tool" type="button" title="Redo" @click=${() => this.#action('redo')}>
+              <dre-icon name="redo" size="14"></dre-icon>
+            </button>
+            <span class="sep" aria-hidden="true"></span>
+            <button class="tool" type="button" title="Search" @click=${() => this.#action('search')}>
+              <dre-icon name="search" size="14"></dre-icon>
+            </button>
+            ${isCode
+              ? html`
+                  <span class="sep" aria-hidden="true"></span>
+                  <button class="tool" type="button" title="Cut" @click=${() => this.#action('cut')}>
+                    <dre-icon name="cut" size="14"></dre-icon>
+                  </button>
+                  <button class="tool" type="button" title="Copy" @click=${() => this.#action('copy')}>
+                    <dre-icon name="copy" size="14"></dre-icon>
+                  </button>
+                  <button class="tool" type="button" title="Paste" @click=${() => this.#action('paste')}>
+                    <dre-icon name="cancel-submit" size="14"></dre-icon>
+                  </button>
+                `
+              : null}
+            <span class="sep" aria-hidden="true"></span>
+            <button class="tool" type="button" title="Structure" @click=${() => this.#action('structure')}>
+              <dre-icon name="code" size="14"></dre-icon>
+            </button>
+          </slot>
+        </div>
+
+        <div class="spacer" aria-hidden="true"></div>
+
         <div class="modes" part="modes">
           <button
             class="mode"
@@ -134,6 +196,7 @@ export class DreSecondaryTopBar extends LitElement {
             aria-pressed=${this.activeMode === 'code' ? 'true' : 'false'}
             @click=${() => this.#setMode('code')}
           >
+            <dre-icon name="vuesax-linear-code" size="14"></dre-icon>
             ${this.codeTabText}
           </button>
           <button
@@ -142,27 +205,53 @@ export class DreSecondaryTopBar extends LitElement {
             aria-pressed=${this.activeMode === 'flow' ? 'true' : 'false'}
             @click=${() => this.#setMode('flow')}
           >
+            <dre-icon name="workflow" size="14"></dre-icon>
             ${this.flowTabText}
           </button>
         </div>
 
-        <div class="tools" part="tools">
-          <slot name="tools">
-            <button class="tool" type="button" title="Undo" @click=${() => this.#action('undo')}>↶</button>
-            <button class="tool" type="button" title="Redo" @click=${() => this.#action('redo')}>↷</button>
-            <button class="tool" type="button" title="Search" @click=${() => this.#action('search')}>⌕</button>
-            <button class="tool" type="button" title="Cut" @click=${() => this.#action('cut')}>✂</button>
-            <button class="tool" type="button" title="Copy" @click=${() => this.#action('copy')}>⧉</button>
-            <button class="tool" type="button" title="Paste" @click=${() => this.#action('paste')}>▣</button>
-            <button class="tool" type="button" title="More" @click=${() => this.#action('more')}>⋯</button>
-          </slot>
-        </div>
-
-        ${this.unsavedText ? html`<span class="unsaved">${this.unsavedText}</span>` : null}
+        <div class="spacer" aria-hidden="true"></div>
 
         <div class="trailing" part="trailing">
           <slot name="trailing">
-            <dre-button hierarchy="secondary" size="xsmall">${this.previewText}</dre-button>
+            ${isCode && this.unsavedText
+              ? html`
+                  <span class="unsaved">
+                    <dre-icon name="cloud-save" size="16"></dre-icon>
+                    ${this.unsavedText}
+                  </span>
+                  <span class="sep" aria-hidden="true"></span>
+                  <dre-button
+                    hierarchy="ghost"
+                    size="xsmall"
+                    icon="leading"
+                    @click=${() => this.#action('preview')}
+                  >
+                    <dre-icon slot="leading" name="play" size="14"></dre-icon>
+                    ${this.previewText}
+                  </dre-button>
+                  <dre-button hierarchy="secondary" size="xsmall" @click=${() => this.#action('save-execute')}>
+                    Save &amp; Execute
+                  </dre-button>
+                  <dre-button hierarchy="primary" size="xsmall" @click=${() => this.#action('save')}>
+                    Save
+                  </dre-button>
+                `
+              : html`
+                  <button class="tool" type="button" title="Share" @click=${() => this.#action('share')}>
+                    <dre-icon name="zoom" size="16"></dre-icon>
+                  </button>
+                  <span class="sep" aria-hidden="true"></span>
+                  <button class="tool" type="button" title="Preview" @click=${() => this.#action('preview')}>
+                    <dre-icon name="play" size="16"></dre-icon>
+                  </button>
+                  <button class="tool" type="button" title="More" @click=${() => this.#action('more')}>
+                    <dre-icon name="more" size="16"></dre-icon>
+                  </button>
+                  <dre-button hierarchy="primary" size="xsmall" @click=${() => this.#action('save')}>
+                    Save
+                  </dre-button>
+                `}
           </slot>
         </div>
       </div>

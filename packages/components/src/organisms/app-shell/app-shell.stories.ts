@@ -1,15 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import '../top-bar/top-bar.js'
+import '../secondary-top-bar/secondary-top-bar.js'
 import '../left-pane/left-pane.js'
 import '../right-pane/right-pane.js'
+import '../bottom-pane/bottom-pane.js'
+import '../monaco-editor/monaco-editor.js'
 import '../../atoms/button/button.js'
 import '../../atoms/icon/icon.js'
 import '../../molecules/dropdown/dropdown.js'
 
 /**
- * Figma **App Layout Composition** — `deluge-ide-notify-participants` 1440×1024.
- * Top Bar 42 · Left Pane 48 · editor 1112 · right Fields 280 · page bg `#f3f3f6`.
+ * App Layout Composition — all Patterns & Layouts organisms:
+ * Top Bar · Secondary Top Bar · Left Pane · Right Pane · Bottom Pane
+ * + Monaco editor (center).
  */
 const meta: Meta = {
   title: 'App Layout Composition',
@@ -19,7 +23,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **App Layout Composition** frame `deluge-ide-notify-participants` (1440×1024) — Top Bar + collapsed Left Pane + code editor + Fields right pane.',
+          'Full IDE shell composed from **Patterns & Layouts**: Top Bar, Secondary Top Bar, Left Pane, Right Pane, Bottom Pane — with Monaco editor in the center.',
       },
     },
   },
@@ -27,20 +31,19 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj
 
-const CODE_LINES: { n: number; text: string; kind?: 'comment' | 'brace' | 'code' }[] = [
-  { n: 1, text: '// Notify Participants Deluge script', kind: 'comment' },
-  { n: 2, text: 'app = my_first_app;', kind: 'code' },
-  { n: 3, text: 'form = Customer_order;', kind: 'code' },
-  { n: 4, text: 'record = form[ID == input.id];', kind: 'code' },
-  { n: 5, text: 'if (record.Status == "Active")', kind: 'code' },
-  { n: 6, text: '{', kind: 'brace' },
-  { n: 7, text: ' info "Processing active record: " + record.Name;', kind: 'code' },
-  { n: 8, text: ' notify_participants(record.ID, "Order status updated");', kind: 'code' },
-  { n: 9, text: '}', kind: 'brace' },
-  { n: 10, text: 'else {', kind: 'code' },
-  { n: 11, text: ' alert "Inactive record detected";', kind: 'code' },
-  { n: 12, text: '}', kind: 'brace' },
-]
+const DELUGE_SAMPLE = `// Notify Participants Deluge script
+app = my_first_app;
+form = Customer_order;
+record = form[ID == input.id];
+if (record.Status == "Active")
+{
+ info "Processing active record: " + record.Name;
+ notify_participants(record.ID, "Order status updated");
+}
+else {
+ alert "Inactive record detected";
+}
+`
 
 const FIELD_ROWS: { name: string; type: string }[] = [
   { name: 'Added_Time', type: 'Date-time' },
@@ -63,15 +66,22 @@ const shellCss = `
     max-height: 100vh;
     display: flex;
     flex-direction: column;
+    gap: 0;
     background: #f3f3f6;
     overflow: hidden;
     font-family: var(--dre-font-family-primary, 'Zoho Puvi', system-ui, sans-serif);
+  }
+  .secondary-wrap {
+    padding: 4px 10px 0;
+    flex: 0 0 auto;
   }
   .workspace {
     flex: 1;
     min-height: 0;
     display: flex;
     flex-direction: row;
+    padding: 4px 10px 0;
+    gap: 0;
   }
   .editor {
     flex: 1;
@@ -99,6 +109,7 @@ const shellCss = `
     font-size: 13px;
     line-height: 16px;
     color: #13141a;
+    font-weight: 500;
   }
   .editor-actions {
     display: inline-flex;
@@ -107,30 +118,9 @@ const shellCss = `
   }
   .editor-body {
     flex: 1;
-    overflow: auto;
-    padding: 20px 8px;
-    box-sizing: border-box;
+    min-height: 0;
+    position: relative;
   }
-  .line {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    min-height: 20px;
-    font-size: 13px;
-    line-height: 20px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  .gutter {
-    width: 32px;
-    flex: 0 0 32px;
-    text-align: right;
-    color: #8c92ac;
-    user-select: none;
-  }
-  .code { flex: 1; min-width: 0; color: #13141a; white-space: pre; }
-  .code.comment { color: #5d6481; }
-  .code.brace { color: #13141a; }
-
   .section {
     border-bottom: 1px solid #f3f3f6;
     padding: 14px 16px;
@@ -166,11 +156,10 @@ const shellCss = `
   .fields-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
     border: 1px solid #e6e8ed;
     border-radius: 4px;
     overflow: hidden;
-    max-height: 394px;
+    max-height: 280px;
     overflow-y: auto;
   }
   .field-row {
@@ -185,7 +174,7 @@ const shellCss = `
   .field-row:last-child { border-bottom: 0; }
   .field-name { color: #13141a; }
   .field-type { color: #5d6481; }
-  .spacer { flex: 1; min-height: 16px; }
+  .spacer { flex: 1; min-height: 8px; }
   .test-action {
     border-top: 1px solid #e6e8ed;
     padding: 14px 16px;
@@ -199,6 +188,10 @@ const shellCss = `
     line-height: 18px;
     color: #5d6481;
   }
+  .bottom-wrap {
+    flex: 0 0 auto;
+    padding: 0 10px 8px;
+  }
 `
 
 export const IDE: Story = {
@@ -207,22 +200,30 @@ export const IDE: Story = {
     <style>
       ${shellCss}
     </style>
-    <div class="shell" data-figma="deluge-ide-notify-participants">
+    <div class="shell" data-figma="patterns-layouts-composition">
+      <!-- 1. Top Bar -->
       <dre-top-bar
-        brand="DRE"
+        brand="Deluge"
         .tabs=${[{ id: 'settings', label: 'Settings', active: true, icon: 'settings' }]}
       ></dre-top-bar>
 
+      <!-- 2. Secondary Top Bar -->
+      <div class="secondary-wrap">
+        <dre-secondary-top-bar
+          type="code-editor"
+          active-mode="code"
+          unsaved-text="4 Unsaved changes"
+        ></dre-secondary-top-bar>
+      </div>
+
       <div class="workspace">
-        <dre-left-pane
-          state="collapsed"
-          .railIcons=${['syntax', 'cable', 'code']}
-        ></dre-left-pane>
+        <!-- 3. Left Pane -->
+        <dre-left-pane state="collapsed"></dre-left-pane>
 
         <main class="editor" aria-label="Code editor">
           <div class="editor-header">
             <div class="active-file">
-              <dre-icon name="code" size="14"></dre-icon>
+              <dre-icon name="file" size="14"></dre-icon>
               <span>on_success.dg</span>
             </div>
             <div class="editor-actions">
@@ -231,17 +232,11 @@ export const IDE: Story = {
             </div>
           </div>
           <div class="editor-body">
-            ${CODE_LINES.map(
-              (line) => html`
-                <div class="line">
-                  <span class="gutter">${line.n}</span>
-                  <span class="code ${line.kind ?? 'code'}">${line.text}</span>
-                </div>
-              `,
-            )}
+            <dre-monaco-editor language="deluge" .value=${DELUGE_SAMPLE}></dre-monaco-editor>
           </div>
         </main>
 
+        <!-- 4. Right Pane -->
         <dre-right-pane title="Fields">
           <div class="section">
             <div class="section-row">
@@ -301,14 +296,26 @@ export const IDE: Story = {
           <div class="test-action" slot="footer">
             <div class="section-row">
               <span class="section-title">Test Action</span>
-              <dre-button hierarchy="secondary" size="xsmall">Button</dre-button>
+              <dre-button hierarchy="secondary" size="xsmall">Validate</dre-button>
             </div>
             <p class="test-desc">
               Validate this action to confirm its configuration, so that the data can be passed
-              forward to the next block.
+              forward.
             </p>
           </div>
         </dre-right-pane>
+      </div>
+
+      <!-- 5. Bottom Pane -->
+      <div class="bottom-wrap">
+        <dre-bottom-pane
+          state="collapsed"
+          error-count="5"
+          info-count="1"
+          last-edited="Last edited by kamal"
+          line-column="Ln15:Col 1 ( 1 Selected)"
+          language="Deluge"
+        ></dre-bottom-pane>
       </div>
     </div>
   `,
