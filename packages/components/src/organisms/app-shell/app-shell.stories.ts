@@ -22,7 +22,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Full IDE shell composed from Patterns & Layouts: Top Bar, Secondary Top Bar, Left Pane, Right Pane, Bottom Pane, with Monaco in the center.',
+          'Full IDE shell: Top Bar · Secondary Top Bar · Left Pane · Monaco · Right Pane · Bottom Pane.',
       },
       story: {
         // Keep the large IDE shell in an iframe so Docs does not collapse to a blank page.

@@ -5,49 +5,6 @@ import * as AppShellStories from './app-shell.stories'
 
 # App Layout Composition
 
-Full Deluge IDE shell composed from **Patterns & Layouts** organisms. Use this page when designing a feature flow from a PRD — start here, then drill into individual panes and bars.
-
-## Anatomy
-
-| Region | Component | Storybook |
-| --- | --- | --- |
-| Top Bar | `dre-top-bar` | Patterns & Layouts / Top Bar |
-| Secondary Top Bar | `dre-secondary-top-bar` | Patterns & Layouts / Secondary Top Bar |
-| Left Pane | `dre-left-pane` | Patterns & Layouts / Left Pane |
-| Center editor | `dre-monaco-editor` | (embedded in IDE story) |
-| Right Pane | `dre-right-pane` | Patterns & Layouts / Right Pane |
-| Bottom Pane | `dre-bottom-pane` | Patterns & Layouts / Bottom Pane |
-
-```
-┌─────────────────────────────────────────────────────────┐
-│ Top Bar                                                 │
-├─────────────────────────────────────────────────────────┤
-│ Secondary Top Bar                                       │
-│        ↕ 8px                                            │
-│ Left ─8px─ Monaco / canvas ─8px─ Right Pane             │
-│        ↕ 8px                                            │
-│ Bottom Pane (status / console / errors)                 │
-└─────────────────────────────────────────────────────────┘
-```
-
-**Spacing:** 8px between Left Pane ↔ Monaco ↔ Right Pane, and between Bottom Pane and the workspace above. Extended Left Pane also uses **8px** between the icon rail and Actions panel (<a href="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable?node-id=12478-5025" target="_blank" rel="noopener noreferrer">12478:5025</a>).
-
-## IDE preview
-
-Live composition of all layout regions. Prefer this canvas when reviewing PRD screens against the design system.
+Full IDE shell: Top Bar · Secondary Top Bar · Left Pane · Monaco · Right Pane · Bottom Pane.
 
 <Canvas of={AppShellStories.IDE} sourceState="shown" />
-
-## How to design a PRD flow
-
-1. Map the PRD to regions in the table above (which pane/bar changes per step).
-2. Reuse existing Patterns & Layouts stories for states (collapsed left rail, expanded console, etc.).
-3. Compose a new App Layout story variant for the full flow when multiple screens are needed.
-4. Only add new atoms/molecules if no Pattern covers the interaction.
-
-## Related Figma
-
-- App shell frame: <a href="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable?node-id=15007-9689" target="_blank" rel="noopener noreferrer">15007:9689</a> (notify participants)
-- Left Pane: <a href="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable?node-id=12613-41263" target="_blank" rel="noopener noreferrer">12613:41263</a>
-- Right Pane: <a href="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable?node-id=12726-50864" target="_blank" rel="noopener noreferrer">12726:50864</a>
-- Bottom Pane: <a href="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable?node-id=12585-36757" target="_blank" rel="noopener noreferrer">12585:36757</a>
