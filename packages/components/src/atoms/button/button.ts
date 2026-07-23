@@ -1,15 +1,15 @@
-import { LitElement, html } from 'lit'
+import { LitElement, html, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { buttonStyles } from './button.styles.js'
 
 export type DreButtonHierarchy = 'primary' | 'secondary' | 'ghost'
 export type DreButtonSize = 'xsmall' | 'small' | 'medium'
 export type DreButtonIcon = 'false' | 'leading' | 'trailing' | 'only'
+export type DreButtonAppearance = 'light' | 'dark'
 
 /**
- * DRE Button — primary interactive atom.
- *
- * Mirrors Figma Button (`12002:17139`): Hierarchy, Size, State, Icon, Destructive.
+ * DRE Button — Figma ⭐ Button (`1267:334303` / `12002:17139`).
+ * Hierarchy Primary/Secondary/Ghost · Size Medium 30 / Small 26 / XSmall 24 · Light/Dark.
  *
  * @slot - Button label
  * @slot leading - Leading icon
@@ -28,6 +28,10 @@ export class DreButton extends LitElement {
   @property({ reflect: true })
   size: DreButtonSize = 'medium'
 
+  /** Light / Dark appearance. */
+  @property({ reflect: true })
+  appearance: DreButtonAppearance = 'light'
+
   /** Icon placement pattern. */
   @property({ reflect: true })
   icon: DreButtonIcon = 'false'
@@ -40,6 +44,10 @@ export class DreButton extends LitElement {
   @property({ type: Boolean, reflect: true })
   disabled = false
 
+  /** Force pressed appearance for Storybook demos. */
+  @property({ type: Boolean, reflect: true })
+  pressed = false
+
   /** Danger / destructive variant. */
   @property({ type: Boolean, reflect: true })
   danger = false
@@ -48,9 +56,9 @@ export class DreButton extends LitElement {
   @property({ type: Boolean, reflect: true })
   destructive = false
 
-  /** Accessible name override (useful for icon-only). */
-  @property({ attribute: 'aria-label' })
-  override ariaLabel: string | null = null
+  /** Accessible name when icon-only (avoids host aria-label). */
+  @property({ attribute: 'accessible-label' })
+  accessibleLabel = ''
 
   #onClick(event: MouseEvent) {
     if (this.disabled) {
@@ -70,13 +78,14 @@ export class DreButton extends LitElement {
   override render() {
     const showLeading = this.icon === 'leading' || this.icon === 'only'
     const showTrailing = this.icon === 'trailing'
+    const label = this.accessibleLabel.trim()
 
     return html`
       <button
         part="button"
         type=${this.type}
         ?disabled=${this.disabled}
-        aria-label=${this.ariaLabel ?? ''}
+        aria-label=${this.icon === 'only' && label ? label : nothing}
         @click=${this.#onClick}
       >
         ${showLeading

@@ -1,12 +1,14 @@
-import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { LitElement, css, html, nothing } from 'lit'
+import { customElement, property, state } from 'lit/decorators.js'
 import { hostBase } from '../../shared/styles.js'
 
 export type DreCheckboxSize = 'small' | 'medium'
+export type DreCheckboxAppearance = 'light' | 'dark'
 
 /**
- * DRE Checkbox — Figma Checkbox (`10048:396`).
- * Small 8×8 r2 · Medium 14×14 r4 · Selected fill `#0d6dfd`.
+ * DRE Checkbox — Figma ⭐ Checkbox (`10036:1134` / `10048:396`).
+ * Medium hit 34 · box 14 r4 · Small hit 20 · box 8 r2.
+ * Border `#727999` · hover/pressed `#0d6dfd` · selected fill `#0d6dfd`.
  */
 @customElement('dre-checkbox')
 export class DreCheckbox extends LitElement {
@@ -23,9 +25,21 @@ export class DreCheckbox extends LitElement {
         cursor: pointer;
       }
 
+      :host([appearance='dark']) {
+        color: #e3e4e6;
+      }
+
       :host([disabled]) {
         cursor: not-allowed;
         color: #9ca1b7;
+      }
+
+      :host([appearance='dark'][disabled]) {
+        color: #727999;
+      }
+
+      :host(:not([has-label]):not([helper])) .text {
+        display: none;
       }
 
       label {
@@ -39,7 +53,7 @@ export class DreCheckbox extends LitElement {
         display: flex;
         flex-direction: column;
         gap: 2px;
-        padding-top: 0;
+        min-width: 0;
       }
 
       :host([helper]) .text {
@@ -61,6 +75,10 @@ export class DreCheckbox extends LitElement {
         font-size: 12px;
         line-height: 16px;
         color: #737380;
+      }
+
+      :host([appearance='dark']) .helper {
+        color: #9ca1b7;
       }
 
       .control {
@@ -85,15 +103,23 @@ export class DreCheckbox extends LitElement {
         margin: 0;
         display: grid;
         place-content: center;
-        border: 1.5px solid #727999;
-        background: #ffffff;
+        border: 1px solid #727999;
+        background: transparent;
         cursor: inherit;
+        box-sizing: border-box;
+        transition:
+          background-color 120ms ease,
+          border-color 120ms ease,
+          box-shadow 120ms ease;
+      }
+
+      :host([appearance='light']) input {
+        background: #ffffff;
       }
 
       :host([size='small']) input {
         width: 8px;
         height: 8px;
-        border-width: 1px;
         border-radius: 2px;
       }
 
@@ -108,19 +134,39 @@ export class DreCheckbox extends LitElement {
         border-color: #0d6dfd;
       }
 
-      input:checked {
+      input:active:not(:disabled):not(:checked),
+      :host([pressed]:not([disabled]):not([checked]):not([indeterminate])) input {
+        border-color: #0d6dfd;
+        box-shadow: 0 0 0 8px rgb(13 109 253 / 10%);
+      }
+
+      input:checked,
+      :host([appearance='light']) input:checked,
+      :host([appearance='dark']) input:checked,
+      :host([indeterminate]) input,
+      :host([appearance='light'][indeterminate]) input,
+      :host([appearance='dark'][indeterminate]) input {
         background: #0d6dfd;
         border-color: #0d6dfd;
       }
 
-      input:checked:hover:not(:disabled) {
+      input:checked:hover:not(:disabled),
+      :host([appearance='light']) input:checked:hover:not(:disabled),
+      :host([appearance='dark']) input:checked:hover:not(:disabled),
+      :host([indeterminate]) input:hover:not(:disabled) {
         background: #2f82fd;
         border-color: #2f82fd;
       }
 
-      input:checked:active:not(:disabled) {
+      input:checked:active:not(:disabled),
+      :host([appearance='light']) input:checked:active:not(:disabled),
+      :host([appearance='dark']) input:checked:active:not(:disabled),
+      :host([indeterminate]) input:active:not(:disabled),
+      :host([pressed][checked]:not([disabled])) input,
+      :host([pressed][indeterminate]:not([disabled])) input {
         background: #051335;
         border-color: #051335;
+        box-shadow: 0 0 0 8px rgb(13 109 253 / 10%);
       }
 
       input:checked::after {
@@ -143,30 +189,6 @@ export class DreCheckbox extends LitElement {
         margin-top: -1px;
       }
 
-      input:disabled {
-        border-color: #e6e8ed;
-        background: #ffffff;
-      }
-
-      input:checked:disabled {
-        background: #f3f3f6;
-        border-color: #e6e8ed;
-      }
-
-      input:checked:disabled::after {
-        border-color: #d6d8e1;
-      }
-
-      input:focus-visible {
-        outline: 2px solid #0d6dfd;
-        outline-offset: 2px;
-      }
-
-      :host([indeterminate]) input {
-        background: #0d6dfd;
-        border-color: #0d6dfd;
-      }
-
       :host([indeterminate]) input::after {
         content: '';
         width: 6px;
@@ -176,16 +198,77 @@ export class DreCheckbox extends LitElement {
         transform: none;
         margin: 0;
       }
+
+      :host([size='small'][indeterminate]) input::after {
+        width: 4px;
+        height: 1px;
+      }
+
+      input:disabled {
+        border-color: #e6e8ed;
+        background: #ffffff;
+        box-shadow: none;
+      }
+
+      :host([appearance='dark']) input:disabled {
+        border-color: #3a3a40;
+        background: #2a2a2e;
+      }
+
+      input:checked:disabled,
+      :host([indeterminate][disabled]) input {
+        background: #f3f3f6;
+        border-color: #e6e8ed;
+      }
+
+      :host([appearance='dark']) input:checked:disabled,
+      :host([appearance='dark'][indeterminate][disabled]) input {
+        background: #2a2a2e;
+        border-color: #3a3a40;
+      }
+
+      input:checked:disabled::after,
+      :host([indeterminate][disabled]) input::after {
+        border-color: #d6d8e1;
+        background: #d6d8e1;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      input:focus-visible {
+        border-color: #0d6dfd;
+        box-shadow: 0 0 0 8px rgb(13 109 253 / 10%);
+      }
     `,
   ]
 
   @property({ reflect: true }) size: DreCheckboxSize = 'medium'
+  @property({ reflect: true }) appearance: DreCheckboxAppearance = 'light'
   @property({ type: Boolean, reflect: true }) checked = false
   @property({ type: Boolean, reflect: true }) disabled = false
   @property({ type: Boolean, reflect: true }) indeterminate = false
+  /** Force pressed appearance for Storybook demos. */
+  @property({ type: Boolean, reflect: true }) pressed = false
   @property({ reflect: true }) helper = ''
   @property() name = ''
   @property() value = 'on'
+  @property({ attribute: 'aria-label' }) override ariaLabel: string | null = null
+  @state() private hasLabel = false
+
+  #labelId = `dre-checkbox-label-${Math.random().toString(36).slice(2, 9)}`
+
+  #onSlotChange(e: Event) {
+    const slot = e.target as HTMLSlotElement
+    this.hasLabel = slot.assignedNodes({ flatten: true }).some((n) => {
+      if (n.nodeType === Node.TEXT_NODE) return Boolean(n.textContent?.trim())
+      if (n.nodeType === Node.ELEMENT_NODE) return true
+      return false
+    })
+    if (this.hasLabel) this.setAttribute('has-label', '')
+    else this.removeAttribute('has-label')
+  }
 
   #onChange(e: Event) {
     const input = e.target as HTMLInputElement
@@ -206,6 +289,7 @@ export class DreCheckbox extends LitElement {
   }
 
   override render() {
+    const name = this.ariaLabel?.trim() || 'Checkbox'
     return html`
       <label>
         <span class="control">
@@ -215,12 +299,17 @@ export class DreCheckbox extends LitElement {
             ?disabled=${this.disabled}
             name=${this.name}
             value=${this.value}
+            aria-labelledby=${this.hasLabel ? this.#labelId : nothing}
+            aria-label=${this.hasLabel ? nothing : name}
+            aria-checked=${this.indeterminate ? 'mixed' : nothing}
             @change=${this.#onChange}
           />
         </span>
         <span class="text">
-          <span class="label"><slot></slot></span>
-          ${this.helper ? html`<span class="helper">${this.helper}</span>` : null}
+          <span class="label" id=${this.#labelId}
+            ><slot @slotchange=${this.#onSlotChange}></slot
+          ></span>
+          ${this.helper ? html`<span class="helper">${this.helper}</span>` : nothing}
         </span>
       </label>
     `

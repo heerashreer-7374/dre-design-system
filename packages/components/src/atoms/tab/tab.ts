@@ -1,12 +1,13 @@
-import { LitElement, css, html } from 'lit'
+import { LitElement, css, html, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { hostBase } from '../../shared/styles.js'
 
 export type DreTabMode = 'default' | 'icon' | 'badge' | 'both'
 
 /**
- * DRE Tab Item — Figma (`12290:8325`).
- * Pad 12×10 · gap 6 · Active indicator 2px `#0d6dfd` · Hover indicator `#8c92ac`.
+ * DRE Tab Item — Figma ⭐ Tab (`12267:1598` / Tab Item `12290:8325`).
+ * Pad 12×10 · gap 6 · Active `#0d6dfd` · Default `#5d6481` · Disabled `#8c92ac`.
+ * Hover/Active show 2px indicator (gray / brand).
  */
 @customElement('dre-tab')
 export class DreTab extends LitElement {
@@ -18,10 +19,11 @@ export class DreTab extends LitElement {
         font-family: var(--dre-font-family-primary, 'Zoho Puvi', system-ui, sans-serif);
       }
 
-      button {
+      .tab {
         display: inline-flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 6px;
         margin: 0;
         padding: 10px 12px 0;
@@ -30,15 +32,25 @@ export class DreTab extends LitElement {
         color: #5d6481;
         font: inherit;
         font-size: 14px;
-        line-height: 16px;
+        font-weight: 400;
+        line-height: normal;
         cursor: pointer;
+        box-sizing: border-box;
       }
 
       .content {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
         min-height: 16px;
+      }
+
+      .label-group {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
       }
 
       .indicator {
@@ -48,7 +60,7 @@ export class DreTab extends LitElement {
         background: transparent;
       }
 
-      :host([active]) button {
+      :host([active]) .tab {
         color: #0d6dfd;
       }
 
@@ -56,31 +68,32 @@ export class DreTab extends LitElement {
         background: #0d6dfd;
       }
 
-      button:hover:not(:disabled) {
-        color: #13141a;
-      }
-
-      :host(:not([active])) button:hover:not(:disabled) .indicator {
+      :host(:not([active]):not([disabled]):hover) .indicator,
+      :host([hovered]:not([active]):not([disabled])) .indicator {
         background: #8c92ac;
       }
 
-      button:disabled {
-        color: #d6d8e1;
+      :host([disabled]) .tab {
+        color: #8c92ac;
         cursor: not-allowed;
       }
 
-      button:focus-visible {
+      :host(:focus) {
+        outline: none;
+      }
+
+      :host(:focus-visible) .tab {
         outline: 2px solid #0d6dfd;
         outline-offset: 2px;
       }
 
       /* Enclosed track (Tab Group Style=Enclosed) */
-      :host([enclosed]) button {
+      :host([enclosed]) .tab {
         padding: 6px 12px;
         border-radius: 2px;
       }
 
-      :host([enclosed][active]) button {
+      :host([enclosed][active]) .tab {
         background: #ffffff;
         color: #0d6dfd;
       }
@@ -91,12 +104,53 @@ export class DreTab extends LitElement {
 
       .icon {
         display: inline-flex;
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        justify-content: center;
         line-height: 0;
         color: inherit;
+        flex-shrink: 0;
+      }
+
+      .icon ::slotted(*) {
+        width: 16px;
+        height: 16px;
       }
 
       .badge {
         display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 16px;
+        height: 16px;
+        border-radius: 34px;
+        border: 1px solid #d6d8e1;
+        font-size: 12px;
+        line-height: normal;
+        color: #5d6481;
+        flex-shrink: 0;
+      }
+
+      :host([active]) .badge {
+        border-color: #0d6dfd;
+        color: #0d6dfd;
+      }
+
+      :host(:not([active]):not([disabled]):hover) .badge,
+      :host([hovered]:not([active]):not([disabled])) .badge {
+        border-color: #5d6481;
+      }
+
+      :host([disabled]) .badge {
+        border-color: #8c92ac;
+        color: #8c92ac;
+      }
+
+      .badge-slot {
+        display: inline-flex;
+        line-height: 0;
       }
     `,
   ]
@@ -105,9 +159,38 @@ export class DreTab extends LitElement {
   @property({ reflect: true }) mode: DreTabMode = 'default'
   @property({ type: Boolean, reflect: true }) active = false
   @property({ type: Boolean, reflect: true }) disabled = false
+  /** Force hovered appearance for Storybook demos. */
+  @property({ type: Boolean, reflect: true }) hovered = false
   @property({ type: Boolean, reflect: true }) enclosed = false
+  /** Count shown in circular badge (modes badge / both). */
+  @property() count = ''
 
-  #onClick() {
+  override connectedCallback() {
+    super.connectedCallback()
+    this.setAttribute('role', 'tab')
+    this.#syncAria()
+    this.addEventListener('click', this.#onClick)
+    this.addEventListener('keydown', this.#onKeydown)
+  }
+
+  override disconnectedCallback() {
+    this.removeEventListener('click', this.#onClick)
+    this.removeEventListener('keydown', this.#onKeydown)
+    super.disconnectedCallback()
+  }
+
+  override updated(changed: Map<string, unknown>) {
+    if (changed.has('active') || changed.has('disabled')) this.#syncAria()
+  }
+
+  #syncAria() {
+    this.setAttribute('aria-selected', this.active ? 'true' : 'false')
+    if (this.disabled) this.setAttribute('aria-disabled', 'true')
+    else this.removeAttribute('aria-disabled')
+    this.tabIndex = this.disabled ? -1 : 0
+  }
+
+  #onClick = () => {
     if (this.disabled) return
     this.dispatchEvent(
       new CustomEvent('dre-tab-select', {
@@ -118,26 +201,33 @@ export class DreTab extends LitElement {
     )
   }
 
+  #onKeydown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      this.#onClick()
+    }
+  }
+
   override render() {
+    const showIcon = this.mode === 'icon' || this.mode === 'both'
+    const showBadge = this.mode === 'badge' || this.mode === 'both'
+    const count = this.count.trim()
+
     return html`
-      <button
-        type="button"
-        role="tab"
-        aria-selected=${this.active ? 'true' : 'false'}
-        ?disabled=${this.disabled}
-        @click=${this.#onClick}
-      >
+      <div class="tab" part="tab">
         <span class="content">
-          ${this.mode === 'icon' || this.mode === 'both'
-            ? html`<span class="icon"><slot name="icon"></slot></span>`
-            : null}
-          <slot></slot>
-          ${this.mode === 'badge' || this.mode === 'both'
-            ? html`<span class="badge"><slot name="badge"></slot></span>`
-            : null}
+          <span class="label-group">
+            ${showIcon ? html`<span class="icon"><slot name="icon"></slot></span>` : nothing}
+            <slot></slot>
+          </span>
+          ${showBadge
+            ? count
+              ? html`<span class="badge">${count}</span>`
+              : html`<span class="badge-slot"><slot name="badge"></slot></span>`
+            : nothing}
         </span>
         <span class="indicator" part="indicator"></span>
-      </button>
+      </div>
     `
   }
 }

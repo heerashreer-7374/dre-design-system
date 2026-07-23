@@ -11,6 +11,7 @@ const meta: Meta = {
   argTypes: {
     hierarchy: { control: 'select', options: ['primary', 'secondary', 'ghost'] },
     size: { control: 'select', options: ['xsmall', 'small', 'medium'] },
+    appearance: { control: 'select', options: ['light', 'dark'] },
     icon: { control: 'select', options: ['false', 'leading', 'trailing', 'only'] },
     disabled: { control: 'boolean' },
     destructive: { control: 'boolean' },
@@ -18,6 +19,7 @@ const meta: Meta = {
   args: {
     hierarchy: 'primary',
     size: 'medium',
+    appearance: 'light',
     icon: 'false',
     disabled: false,
     destructive: false,
@@ -26,8 +28,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          `Figma **⭐ Button** ${figmaDocLink('12002:17139')} — Hierarchy · Size · State · Icon. Heights: Medium 30 · Small 26 · XSmall 24.`,
+        component: `Figma **⭐ Button** ${figmaDocLink('1267:334303')} — Light/Dark · Primary/Secondary/Ghost · Medium 30 · Small 26 · XSmall 24.`,
       },
     },
   },
@@ -36,14 +37,16 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {
+  name: 'Features / Default',
   render: (args) => html`
     <dre-button
       hierarchy=${args.hierarchy}
       size=${args.size}
+      appearance=${args.appearance}
       icon=${args.icon}
       ?disabled=${args.disabled}
       ?destructive=${args.destructive}
-      aria-label=${args.icon === 'only' ? args.label : ''}
+      accessible-label=${args.icon === 'only' ? args.label : ''}
     >
       ${args.icon === 'leading' || args.icon === 'only'
         ? html`<dre-icon slot="leading" name="sparkles" size="14"></dre-icon>`
@@ -91,7 +94,7 @@ export const Icons: Story = {
         Trailing
         <dre-icon slot="trailing" name="chevron-down" size="14"></dre-icon>
       </dre-button>
-      <dre-button icon="only" aria-label="Sparkles">
+      <dre-button icon="only" accessible-label="Sparkles">
         <dre-icon slot="leading" name="sparkles" size="14"></dre-icon>
       </dre-button>
     </div>
@@ -105,9 +108,37 @@ export const States: Story = {
       ${(['primary', 'secondary', 'ghost'] as const).map(
         (h) => html`
           <div style="display:flex;gap:12px;align-items:center;">
-            <span style="width:80px;font-size:12px;color:var(--dre-color-text-subtle);">${h}</span>
+            <span style="width:80px;font-size:12px;color:#575b62;">${h}</span>
             <dre-button hierarchy=${h}>Default</dre-button>
+            <dre-button hierarchy=${h} ?pressed=${true}>Pressed</dre-button>
             <dre-button hierarchy=${h} disabled>Disabled</dre-button>
+          </div>
+        `,
+      )}
+    </div>
+  `,
+}
+
+export const Dark: Story = {
+  name: 'Features / Dark',
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+  render: () => html`
+    <div
+      style="display:flex;flex-direction:column;gap:16px;padding:16px;background:#1b1b1e;border-radius:8px;"
+    >
+      ${(['primary', 'secondary', 'ghost'] as const).map(
+        (h) => html`
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <span style="width:80px;font-size:12px;color:#c5c7ce;">${h}</span>
+            <dre-button appearance="dark" hierarchy=${h}>Default</dre-button>
+            <dre-button appearance="dark" hierarchy=${h} ?pressed=${true}>Pressed</dre-button>
+            <dre-button appearance="dark" hierarchy=${h} disabled>Disabled</dre-button>
+            <dre-button appearance="dark" hierarchy=${h} icon="leading">
+              <dre-icon slot="leading" name="sparkles" size="14"></dre-icon>
+              Icon
+            </dre-button>
           </div>
         `,
       )}
@@ -122,7 +153,7 @@ export const Matrix: Story = {
       ${(['primary', 'secondary', 'ghost'] as const).map(
         (h) => html`
           <div>
-            <div style="font-size:12px;margin-bottom:8px;color:var(--dre-color-text-subtle);">${h}</div>
+            <div style="font-size:12px;margin-bottom:8px;color:#575b62;">${h}</div>
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
               ${(['xsmall', 'small', 'medium'] as const).map(
                 (s) => html`<dre-button hierarchy=${h} size=${s}>${s}</dre-button>`,
