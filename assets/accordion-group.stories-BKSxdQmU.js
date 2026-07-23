@@ -1,0 +1,29 @@
+import{b as e}from"./iframe-CxxUV_ql.js";import"./accordion-m_UYr-Pe.js";import"./accordion-group-B6CadvQW.js";import"./icon-DJMhDlAD.js";import{f as v}from"./figma-By0ClEEC.js";import"./preload-helper-Dp1pzeXC.js";import"./property-BAmm2Bkg.js";import"./styles-DnIXmjyS.js";const P={title:"Assembled Components/Accordion Group",component:"dre-accordion-group",tags:["autodocs"],parameters:{docs:{description:{component:`Figma **💠 Accordion Group** ${v("12502:12082")} — Count 3/5/9 · gap 11 · width 202 · exclusive expand.`}}}},a=r=>e`
+  <div
+    style="
+      background:#f7f7f9;border:1px solid #e6e8ed;border-radius:6px;
+      padding:6px;min-height:46px;box-sizing:border-box;font-size:12px;color:#13141a;
+    "
+  >
+    ${r}
+  </div>
+`;function i(r,d=0){return e`
+    <dre-accordion-group exclusive>
+      ${r.map((b,t)=>e`
+          <dre-accordion title=${b} ?expanded=${t===d}>
+            <dre-icon slot="lead" name="settings" size="14"></dre-icon>
+            ${t===d?e`${a("Item 1")}${a("Item 2")}${a("Item 3")}`:null}
+          </dre-accordion>
+          ${t<r.length-1?e`<div style="height:1px;background:#f3f3f6;width:100%;"></div>`:null}
+        `)}
+    </dre-accordion-group>
+  `}const o={name:"Features / Count 3",render:()=>i(["Basics","Advanced","Permissions"])},n={name:"Features / Count 5",render:()=>i(["Basics","Advanced","Permissions","Integrations","Audit"])},s={name:"Features / Count 9",render:()=>i(["Basics","Advanced","Permissions","Integrations","Audit","Webhooks","Logs","Billing","Danger zone"])};var c,u,m;o.parameters={...o.parameters,docs:{...(c=o.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  name: 'Features / Count 3',
+  render: () => renderGroup(['Basics', 'Advanced', 'Permissions'])
+}`,...(m=(u=o.parameters)==null?void 0:u.docs)==null?void 0:m.source}}};var p,g,l;n.parameters={...n.parameters,docs:{...(p=n.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  name: 'Features / Count 5',
+  render: () => renderGroup(['Basics', 'Advanced', 'Permissions', 'Integrations', 'Audit'])
+}`,...(l=(g=n.parameters)==null?void 0:g.docs)==null?void 0:l.source}}};var C,f,A;s.parameters={...s.parameters,docs:{...(C=s.parameters)==null?void 0:C.docs,source:{originalSource:`{
+  name: 'Features / Count 9',
+  render: () => renderGroup(['Basics', 'Advanced', 'Permissions', 'Integrations', 'Audit', 'Webhooks', 'Logs', 'Billing', 'Danger zone'])
+}`,...(A=(f=s.parameters)==null?void 0:f.docs)==null?void 0:A.source}}};const z=["Count3","Count5","Count9"];export{o as Count3,n as Count5,s as Count9,z as __namedExportsOrder,P as default};
