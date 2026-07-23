@@ -4,8 +4,8 @@ import { hostBase } from '../../shared/styles.js'
 import './accordion.js'
 
 /**
- * DRE Accordion Group — Figma (`12502:12082`).
- * Width 202 · gap 11 · dividers `#f3f3f6` · Count 3/5/9 compositions.
+ * DRE Accordion Group — Figma Accordion/Panel composition (`12502:11657`).
+ * Width 202 · gap 11 · optional dividers `#f3f3f6` · exclusive expand.
  */
 @customElement('dre-accordion-group')
 export class DreAccordionGroup extends LitElement {
@@ -25,17 +25,30 @@ export class DreAccordionGroup extends LitElement {
         gap: 11px;
       }
 
+      :host([divided]) .group {
+        gap: 0;
+      }
+
+      :host([divided]) ::slotted(dre-accordion) {
+        padding-block: 10px 0;
+      }
+
+      :host([divided]) ::slotted(dre-accordion:not(:last-child)) {
+        border-bottom: 1px solid #f3f3f6;
+        padding-bottom: 10px;
+        margin-bottom: 0;
+      }
+
       ::slotted(dre-accordion) {
         max-width: 100%;
       }
-
-      /* Dividers between slotted accordions via adjacent sibling in light DOM —
-         use ::slotted can't style between; inject via CSS on host children wrapper */
     `,
   ]
 
   /** When true, only one accordion may be expanded at a time. */
   @property({ type: Boolean, reflect: true }) exclusive = true
+  /** Figma Accordion/Panel — show `#f3f3f6` dividers between sections. */
+  @property({ type: Boolean, reflect: true }) divided = false
 
   #onToggle(e: Event) {
     if (!this.exclusive) return

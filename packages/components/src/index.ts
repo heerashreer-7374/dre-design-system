@@ -5,7 +5,15 @@ export { DreCheckbox } from './atoms/checkbox/checkbox.js'
 export { DreRadio } from './atoms/radio/radio.js'
 export { DreToggle } from './atoms/toggle/toggle.js'
 export { DreBadge } from './atoms/badge/badge.js'
-export type { DreBadgeTone } from './atoms/badge/badge.js'
+export type { DreBadgeTone, DreBadgeStatus, DreBadgeSize, DreBadgeAppearance } from './atoms/badge/badge.js'
+export { DreCountBadge } from './atoms/badge/count-badge.js'
+export type { DreCountBadgeSize, DreCountBadgeAppearance } from './atoms/badge/count-badge.js'
+export { DreInfoBanner } from './atoms/badge/info-banner.js'
+export type {
+  DreInfoBannerType,
+  DreInfoBannerSize,
+  DreInfoBannerAppearance,
+} from './atoms/badge/info-banner.js'
 export { DreInput } from './atoms/input/input.js'
 export { DreIcon } from './atoms/icon/icon.js'
 export { DRE_ICON_NAMES } from './atoms/icon/icons.js'
@@ -26,6 +34,11 @@ export { DreDropdownItem } from './molecules/dropdown/dropdown-item.js'
 
 export { DreAccordion } from './molecules/accordion/accordion.js'
 export { DreAccordionGroup } from './molecules/accordion/accordion-group.js'
+export { DreAccordionPanel } from './molecules/accordion/accordion-panel.js'
+export { DreBlockItem } from './molecules/accordion/block-item.js'
+export { DreConsole } from './molecules/accordion/console.js'
+export { DreConsoleRow } from './molecules/accordion/console-row.js'
+export type { DreConsoleBadgeTone, DreConsoleRowType } from './molecules/accordion/console-row.js'
 export { DrePopover } from './molecules/popover/popover.js'
 
 export { DreFieldGroup } from './molecules/field-group/field-group.js'

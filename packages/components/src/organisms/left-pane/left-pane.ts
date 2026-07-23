@@ -4,6 +4,7 @@ import { hostBase } from '../../shared/styles.js'
 import '../../atoms/icon/icon.js'
 import '../../molecules/accordion/accordion.js'
 import '../../molecules/accordion/accordion-group.js'
+import '../../molecules/accordion/block-item.js'
 
 export type DreLeftPaneMode = 'code-editor' | 'visual-builder'
 export type DreLeftPaneState = 'extended' | 'collapsed'
@@ -149,56 +150,6 @@ export class DreLeftPane extends LitElement {
         min-height: 0;
       }
 
-      .snippet-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 10px;
-        border: 1px dashed #d6d8e1;
-        border-radius: 6px;
-        background: #f9fafc;
-      }
-
-      .snippet {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 8px 10px;
-        border-radius: 6px;
-        background: #ffffff;
-        border: 1px solid #e6e8ed;
-      }
-
-      .snippet-icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: #f3f3f6;
-        color: #5d6481;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        line-height: 0;
-      }
-
-      .snippet-copy {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 0;
-      }
-
-      .snippet-title {
-        font-size: 12px;
-        font-weight: 500;
-        color: #13141a;
-      }
-
-      .snippet-desc {
-        font-size: 11px;
-        color: #5d6481;
-      }
     `,
   ]
 
@@ -240,18 +191,6 @@ export class DreLeftPane extends LitElement {
     )
   }
 
-  #snippet(title: string, desc: string, icon: string) {
-    return html`
-      <div class="snippet">
-        <span class="snippet-icon"><dre-icon name=${icon} size="14"></dre-icon></span>
-        <span class="snippet-copy">
-          <span class="snippet-title">${title}</span>
-          <span class="snippet-desc">${desc}</span>
-        </span>
-      </div>
-    `
-  }
-
   override render() {
     const top = this.railIcons.length ? this.railIcons : this.railTopIcons
     const bottom = this.railIcons.length ? [] : this.railBottomIcons
@@ -278,46 +217,48 @@ export class DreLeftPane extends LitElement {
         </div>
         <div class="body" part="body">
           <slot>
-            <dre-accordion-group exclusive>
+            <dre-accordion-group exclusive divided>
               <dre-accordion title="Basics" expanded>
                 <dre-icon slot="lead" name="code-1" size="14"></dre-icon>
-                <div class="snippet-list">
-                  ${this.#snippet('Set Variable', 'assign values to fields', 'code')}
-                  ${this.#snippet('Set Field Value', 'assign values to fields', 'cioption')}
-                  ${this.#snippet('Call Function', 'assign values to fields', 'function-square')}
-                </div>
+                <dre-block-item
+                  label="Set Variable"
+                  description="assign values to fields"
+                  icon="code"
+                ></dre-block-item>
+                <dre-block-item
+                  label="Set Field Value"
+                  description="assign values to fields"
+                  icon="cioption"
+                ></dre-block-item>
+                <dre-block-item
+                  label="Call Function"
+                  description="assign values to fields"
+                  icon="function-square"
+                ></dre-block-item>
               </dre-accordion>
               <dre-accordion title="Ai Task">
                 <dre-icon slot="lead" name="sparkles" size="14"></dre-icon>
-                AI-powered task blocks.
               </dre-accordion>
               <dre-accordion title="Flow Control">
                 <dre-icon slot="lead" name="workflow" size="14"></dre-icon>
-                Branching and wait utilities.
               </dre-accordion>
               <dre-accordion title="Form Control">
                 <dre-icon slot="lead" name="edit" size="14"></dre-icon>
-                Show, hide, and set fields.
               </dre-accordion>
               <dre-accordion title="Subform Action">
                 <dre-icon slot="lead" name="split" size="14"></dre-icon>
-                Subform create and update.
               </dre-accordion>
               <dre-accordion title="Notification">
                 <dre-icon slot="lead" name="bell" size="14"></dre-icon>
-                Email, SMS, and alerts.
               </dre-accordion>
               <dre-accordion title="Debug">
                 <dre-icon slot="lead" name="warning" size="14"></dre-icon>
-                Info, alert, and log helpers.
               </dre-accordion>
               <dre-accordion title="Data Access">
                 <dre-icon slot="lead" name="fetch-record" size="14"></dre-icon>
-                Fetch, create, update, delete.
               </dre-accordion>
               <dre-accordion title="Portal User Task">
                 <dre-icon slot="lead" name="scan-face" size="14"></dre-icon>
-                Portal user operations.
               </dre-accordion>
             </dre-accordion-group>
           </slot>

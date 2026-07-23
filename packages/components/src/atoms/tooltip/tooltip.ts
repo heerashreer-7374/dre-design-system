@@ -1,7 +1,8 @@
-import { LitElement, css, html } from 'lit'
+import { LitElement, css, html, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { hostBase } from '../../shared/styles.js'
 
+export type DreTooltipAppearance = 'light' | 'dark'
 export type DreTooltipArrow =
   | 'none'
   | 'bottom-left'
@@ -10,11 +11,12 @@ export type DreTooltipArrow =
   | 'top-left'
   | 'top-center'
   | 'top-right'
+/** @deprecated prefer arrow */
 export type DreTooltipPlacement = 'top' | 'bottom' | 'left' | 'right'
 
 /**
- * DRE Tooltip — Figma (`12055:2105`).
- * Body pad 12×8 · radius 4 · bg `#1b1b1e` · title 12px white · supporting `#e3e4e6`.
+ * DRE Tooltip — Figma (`10320:14066` / `12055:2105`).
+ * Appearance Light `#383c4d` / Dark `#1b1b1e` · pad 12×8 · radius 4 · Elevation/High · Arrow 7 positions · width hug / 311 with supporting text.
  */
 @customElement('dre-tooltip')
 export class DreTooltip extends LitElement {
@@ -32,40 +34,18 @@ export class DreTooltip extends LitElement {
         z-index: 30;
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        padding: 8px 12px;
-        border-radius: 4px;
-        background: #1b1b1e;
-        color: #ffffff;
-        font-size: 12px;
-        line-height: 14px;
+        align-items: stretch;
+        width: max-content;
         max-width: 311px;
         pointer-events: none;
         opacity: 0;
-        white-space: normal;
         transition: opacity 120ms ease;
       }
 
-      .tip::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border: 6px solid transparent;
-        display: none;
-      }
-
-      :host([arrow]:not([arrow='none'])) .tip::after {
-        display: block;
-      }
-
-      .title {
-        color: #ffffff;
-      }
-
-      .support {
-        color: #e3e4e6;
-        white-space: normal;
+      /* Figma: supporting-text body is fixed 311 · simple title hugs (~108 for default copy) */
+      :host([has-supporting]) .tip {
+        width: 311px;
+        max-width: 311px;
       }
 
       :host(:hover) .tip,
@@ -74,14 +54,101 @@ export class DreTooltip extends LitElement {
         opacity: 1;
       }
 
-      /* Placement via arrow / placement */
+      .body {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background: #383c4d;
+        box-shadow:
+          0 4px 6px -2px rgba(0, 0, 0, 0.08),
+          0 8px 24px -4px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      :host([appearance='dark']) .body {
+        background: #1b1b1e;
+      }
+
+      .title {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: normal;
+        color: #f3f3f6;
+        white-space: nowrap;
+      }
+
+      :host([appearance='dark']) .title {
+        color: #ffffff;
+      }
+
+      .support {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        color: #d6d8e1;
+        white-space: normal;
+        width: 100%;
+      }
+
+      :host([appearance='dark']) .support {
+        color: #e3e4e6;
+      }
+
+      .arrow-row {
+        display: flex;
+        width: 100%;
+        line-height: 0;
+      }
+
+      .arrow-row[data-side='bottom'] {
+        margin-top: -2px;
+      }
+
+      .arrow-row[data-side='top'] {
+        margin-bottom: -2px;
+      }
+
+      .arrow-row[data-align='left'] {
+        justify-content: flex-start;
+        padding-left: 16px;
+      }
+
+      .arrow-row[data-align='center'] {
+        justify-content: center;
+      }
+
+      .arrow-row[data-align='right'] {
+        justify-content: flex-end;
+        padding-right: 16px;
+      }
+
+      .arrow {
+        width: 12px;
+        height: 8px;
+        display: block;
+        color: #383c4d;
+      }
+
+      :host([appearance='dark']) .arrow {
+        color: #1b1b1e;
+      }
+
+      .arrow[data-point='down'] {
+        transform: rotate(180deg);
+      }
+
+      /* —— Placement relative to trigger —— */
       :host([arrow='top-center']) .tip,
       :host([arrow='top-left']) .tip,
       :host([arrow='top-right']) .tip,
       :host([placement='bottom']) .tip,
       :host(:not([placement]):not([arrow])) .tip,
       :host([arrow='none']) .tip {
-        top: calc(100% + 6px);
+        top: calc(100% + 4px);
         left: 50%;
         transform: translateX(-50%);
       }
@@ -90,21 +157,21 @@ export class DreTooltip extends LitElement {
       :host([arrow='bottom-left']) .tip,
       :host([arrow='bottom-right']) .tip,
       :host([placement='top']) .tip {
-        bottom: calc(100% + 6px);
+        bottom: calc(100% + 4px);
         top: auto;
         left: 50%;
         transform: translateX(-50%);
       }
 
       :host([placement='left']) .tip {
-        right: calc(100% + 6px);
+        right: calc(100% + 4px);
         left: auto;
         top: 50%;
         transform: translateY(-50%);
       }
 
       :host([placement='right']) .tip {
-        left: calc(100% + 6px);
+        left: calc(100% + 4px);
         top: 50%;
         transform: translateY(-50%);
       }
@@ -121,60 +188,89 @@ export class DreTooltip extends LitElement {
         right: 0;
         transform: none;
       }
-
-      /* Arrow pointing up (tooltip below) */
-      :host([arrow^='top']) .tip::after {
-        bottom: 100%;
-        border-bottom-color: #1b1b1e;
-        border-top-width: 0;
-      }
-
-      :host([arrow='top-center']) .tip::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      :host([arrow='top-left']) .tip::after {
-        left: 12px;
-      }
-      :host([arrow='top-right']) .tip::after {
-        right: 12px;
-      }
-
-      /* Arrow pointing down (tooltip above) */
-      :host([arrow^='bottom']) .tip::after {
-        top: 100%;
-        border-top-color: #1b1b1e;
-        border-bottom-width: 0;
-      }
-
-      :host([arrow='bottom-center']) .tip::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      :host([arrow='bottom-left']) .tip::after {
-        left: 12px;
-      }
-      :host([arrow='bottom-right']) .tip::after {
-        right: 12px;
-      }
     `,
   ]
 
+  /** Figma Appearance: Light `#383c4d` · Dark `#1b1b1e` */
+  @property({ reflect: true }) appearance: DreTooltipAppearance = 'light'
   @property() content = ''
   @property({ attribute: 'supporting-text' }) supportingText = ''
   @property({ reflect: true }) arrow: DreTooltipArrow = 'none'
+  /** @deprecated prefer arrow */
   @property({ reflect: true }) placement: DreTooltipPlacement = 'bottom'
   @property({ type: Boolean, reflect: true }) open = false
+  /** Reflected when supporting text is present — drives fixed 311px width. */
+  @property({ type: Boolean, reflect: true, attribute: 'has-supporting' })
+  hasSupporting = false
+
+  override willUpdate(changed: Map<string, unknown>) {
+    if (changed.has('supportingText') || changed.size === 0) {
+      this.hasSupporting = this.supportingText.trim().length > 0
+    }
+  }
+
+  #arrowMeta(): { side: 'top' | 'bottom'; align: 'left' | 'center' | 'right' } | null {
+    switch (this.arrow) {
+      case 'top-left':
+        return { side: 'top', align: 'left' }
+      case 'top-center':
+        return { side: 'top', align: 'center' }
+      case 'top-right':
+        return { side: 'top', align: 'right' }
+      case 'bottom-left':
+        return { side: 'bottom', align: 'left' }
+      case 'bottom-center':
+        return { side: 'bottom', align: 'center' }
+      case 'bottom-right':
+        return { side: 'bottom', align: 'right' }
+      default:
+        return null
+    }
+  }
+
+  #arrowSvg(point: 'up' | 'down') {
+    return html`
+      <svg
+        class="arrow"
+        data-point=${point}
+        viewBox="0 0 10.3923 6"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path d="M5.19615 0L10.3923 6H0L5.19615 0Z" fill="currentColor" />
+      </svg>
+    `
+  }
+
+  #arrowRow() {
+    const meta = this.#arrowMeta()
+    if (!meta) return nothing
+    return html`
+      <div class="arrow-row" data-side=${meta.side} data-align=${meta.align} part="arrow">
+        ${this.#arrowSvg(meta.side === 'top' ? 'up' : 'down')}
+      </div>
+    `
+  }
 
   override render() {
+    const meta = this.#arrowMeta()
+    const support = this.supportingText.trim()
+    const body = html`
+      <div class="body" part="body">
+        <span class="title" part="title">${this.content}<slot name="content"></slot></span>
+        ${support
+          ? html`<span class="support" part="support">${support}</span>`
+          : html`<slot name="supporting"></slot>`}
+      </div>
+    `
+
     return html`
       <slot></slot>
-      <span class="tip" part="tip" role="tooltip">
-        <span class="title">${this.content}<slot name="content"></slot></span>
-        ${this.supportingText
-          ? html`<span class="support">${this.supportingText}</span>`
-          : html`<slot name="supporting"></slot>`}
-      </span>
+      <div class="tip" part="tip" role="tooltip">
+        ${meta?.side === 'top' ? this.#arrowRow() : nothing}
+        ${body}
+        ${meta?.side === 'bottom' ? this.#arrowRow() : nothing}
+      </div>
     `
   }
 }

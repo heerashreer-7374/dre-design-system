@@ -1,2 +1,7 @@
 export { DreAccordion } from './accordion.js'
 export { DreAccordionGroup } from './accordion-group.js'
+export { DreAccordionPanel } from './accordion-panel.js'
+export { DreBlockItem } from './block-item.js'
+export { DreConsole } from './console.js'
+export { DreConsoleRow } from './console-row.js'
+export type { DreConsoleBadgeTone, DreConsoleRowType } from './console-row.js'

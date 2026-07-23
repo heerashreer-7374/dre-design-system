@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './accordion.js'
 import './accordion-group.js'
+import './accordion-panel.js'
+import './block-item.js'
 import '../../atoms/icon/icon.js'
 import { figmaDocLink } from '../../shared/figma.js'
 
@@ -13,7 +15,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          `Figma **💠 Accordion Group** ${figmaDocLink('12502:12082')} — Count 3/5/9 · gap 11 · width 202 · exclusive expand.`,
+          `Figma **💠 Accordion Group** ${figmaDocLink('12502:11657')} — width 202 · dividers · exclusive expand. Panel chrome via \`dre-accordion-panel\`.`,
       },
     },
   },
@@ -21,34 +23,24 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj
 
-const block = (label: string) => html`
-  <div
-    style="
-      background:#f7f7f9;border:1px solid #e6e8ed;border-radius:6px;
-      padding:6px;min-height:46px;box-sizing:border-box;font-size:12px;color:#13141a;
-    "
-  >
-    ${label}
-  </div>
+const blocks = html`
+  <dre-block-item label="Set Field Value" description="assign values to fields" icon="cioption"></dre-block-item>
+  <dre-block-item label="Set Field Value" description="assign values to fields" icon="cioption"></dre-block-item>
+  <dre-block-item label="Set Field Value" description="assign values to fields" icon="cioption"></dre-block-item>
 `
 
 function renderGroup(titles: string[], expandedIndex = 0) {
   return html`
-    <dre-accordion-group exclusive>
+    <dre-accordion-panel title="Actions">
       ${titles.map(
         (title, i) => html`
           <dre-accordion title=${title} ?expanded=${i === expandedIndex}>
-            <dre-icon slot="lead" name="settings" size="14"></dre-icon>
-            ${i === expandedIndex
-              ? html`${block('Item 1')}${block('Item 2')}${block('Item 3')}`
-              : null}
+            <dre-icon slot="lead" name="code-1" size="14"></dre-icon>
+            ${i === expandedIndex ? blocks : null}
           </dre-accordion>
-          ${i < titles.length - 1
-            ? html`<div style="height:1px;background:#f3f3f6;width:100%;"></div>`
-            : null}
         `,
       )}
-    </dre-accordion-group>
+    </dre-accordion-panel>
   `
 }
 
@@ -68,13 +60,13 @@ export const Count9: Story = {
   render: () =>
     renderGroup([
       'Basics',
-      'Advanced',
-      'Permissions',
-      'Integrations',
-      'Audit',
-      'Webhooks',
-      'Logs',
-      'Billing',
-      'Danger zone',
+      'Ai Task',
+      'Flow Control',
+      'Form Control',
+      'Subform Action',
+      'Notification',
+      'Debug',
+      'Data Access',
+      'Portal User Task',
     ]),
 }

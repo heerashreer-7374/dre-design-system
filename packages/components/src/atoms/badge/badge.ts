@@ -4,12 +4,13 @@ import { hostBase } from '../../shared/styles.js'
 
 export type DreBadgeStatus = 'success' | 'warning' | 'error' | 'info'
 export type DreBadgeSize = 'small' | 'medium' | 'large'
+export type DreBadgeAppearance = 'light' | 'dark'
 /** Legacy */
 export type DreBadgeTone = DreBadgeStatus | 'neutral' | 'brand' | 'danger'
 
 /**
- * DRE Status Badge — Figma (`12301:9489`).
- * Small h20 pad 8×4 fs10 · Medium h27 pad 12×6 fs12 · Large h33 pad 16×8 fs14.
+ * DRE Status Badge — Figma (`12290:8429` / `12301:9489`).
+ * Small h20 pad 8×4 fs10 · Medium h27 pad 12×6 fs12 · Large h33 pad 16×8 fs14 · Semibold · Appearance Light/Dark.
  */
 @customElement('dre-badge')
 export class DreBadge extends LitElement {
@@ -25,9 +26,10 @@ export class DreBadge extends LitElement {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
         border-radius: 100px;
-        font-weight: 400;
-        line-height: 1.2;
+        font-weight: 600;
+        line-height: normal;
         color: #ffffff;
         white-space: nowrap;
       }
@@ -51,24 +53,34 @@ export class DreBadge extends LitElement {
         font-size: 14px;
       }
 
-      :host([status='success']) span,
-      :host([tone='success']) span {
+      /* Legacy tone — only when status is unset */
+      :host([tone='success']:not([status])) span {
         background: #55b45a;
       }
-      :host([status='warning']) span,
-      :host([tone='warning']) span {
+      :host([tone='warning']:not([status])) span {
         background: #edb51d;
       }
-      :host([status='error']) span,
-      :host([tone='error']) span,
-      :host([tone='danger']) span {
+      :host([tone='error']:not([status])) span,
+      :host([tone='danger']:not([status])) span {
         background: #d64333;
       }
-      :host([status='info']) span,
-      :host([tone='info']) span,
-      :host([tone='brand']) span,
-      :host([tone='neutral']) span,
+      :host([tone='info']:not([status])) span,
+      :host([tone='brand']:not([status])) span,
+      :host([tone='neutral']:not([status])) span,
       :host(:not([status]):not([tone])) span {
+        background: #3187d8;
+      }
+
+      :host([status='success']) span {
+        background: #55b45a;
+      }
+      :host([status='warning']) span {
+        background: #edb51d;
+      }
+      :host([status='error']) span {
+        background: #d64333;
+      }
+      :host([status='info']) span {
         background: #3187d8;
       }
     `,
@@ -76,6 +88,8 @@ export class DreBadge extends LitElement {
 
   @property({ reflect: true }) status: DreBadgeStatus = 'info'
   @property({ reflect: true }) size: DreBadgeSize = 'small'
+  /** Figma Appearance — Light/Dark share fills in Status Badge. */
+  @property({ reflect: true }) appearance: DreBadgeAppearance = 'light'
   /** Legacy alias mapped to status */
   @property({ reflect: true }) tone: DreBadgeTone = 'info'
 
