@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './named-groups.js'
 import '../../atoms/checkbox/checkbox.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Checkbox Group',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Checkbox Group** (`12044:27604`) — title/description · Size · Orientation · item helper text.',
+          `Figma **💠 Checkbox Group** ${figmaDocLink('12044:27604')} — title/description · Size · Orientation · item helper text.`,
       },
     },
   },

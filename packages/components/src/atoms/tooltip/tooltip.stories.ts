@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './tooltip.js'
 import '../button/button.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Tooltip',
@@ -30,7 +31,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Tooltip** (`12055:2105`) — pad 12×8 · radius 4 · bg `#1b1b1e` · optional supporting text + arrow.',
+          `Figma **⭐ Tooltip** ${figmaDocLink('12055:2105')} — pad 12×8 · radius 4 · bg \`#1b1b1e\` · optional supporting text + arrow.`,
       },
     },
   },

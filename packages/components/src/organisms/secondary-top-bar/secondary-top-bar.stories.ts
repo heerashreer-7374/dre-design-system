@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './secondary-top-bar.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Patterns & Layouts/Secondary Top Bar',
@@ -11,7 +12,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Maps to Figma Secondary Top Bar (`12726:51297`) — Code/Flow switch + editor tools.',
+          `Maps to Figma Secondary Top Bar ${figmaDocLink('12726:51297')} — Code/Flow switch + editor tools.`,
       },
     },
   },

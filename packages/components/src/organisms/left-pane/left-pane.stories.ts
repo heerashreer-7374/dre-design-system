@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './left-pane.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Patterns & Layouts/Left Pane',
@@ -10,7 +11,7 @@ const meta: Meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Maps to Figma Left Pane (`12613:41263`) — Actions library rail.',
+        component: `Maps to Figma Left Pane ${figmaDocLink('12613:41263')} — Actions library rail.`,
       },
     },
   },

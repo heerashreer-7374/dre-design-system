@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './radio.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Radio Button',
@@ -16,7 +17,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Radio Button** (`10151:1002`) — Small 8×8 · Medium 14×14 · States Default/Hover/Selected/Disabled.',
+          `Figma **⭐ Radio Button** ${figmaDocLink('10151:1002')} — Small 8×8 · Medium 14×14 · States Default/Hover/Selected/Disabled.`,
       },
     },
   },

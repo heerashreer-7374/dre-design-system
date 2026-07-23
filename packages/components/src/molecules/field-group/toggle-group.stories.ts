@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './named-groups.js'
 import '../../atoms/toggle/toggle.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Toggle Group',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Toggle Group** (`12045:29470`) — title/description · Size · Orientation.',
+          `Figma **💠 Toggle Group** ${figmaDocLink('12045:29470')} — title/description · Size · Orientation.`,
       },
     },
   },

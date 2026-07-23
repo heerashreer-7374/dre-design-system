@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './modal.js'
 import '../../atoms/button/button.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Modal',
@@ -11,7 +12,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Modal** Basic Dialog (`12306:9560`) — width 428 · radius 8 · pad 12 · divider `#e6e8ed`.',
+          `Figma **⭐ Modal** Basic Dialog ${figmaDocLink('12306:9560')} — width 428 · radius 8 · pad 12 · divider \`#e6e8ed\`.`,
       },
     },
   },

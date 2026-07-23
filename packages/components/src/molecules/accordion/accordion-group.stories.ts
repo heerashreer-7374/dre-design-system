@@ -3,6 +3,7 @@ import { html } from 'lit'
 import './accordion.js'
 import './accordion-group.js'
 import '../../atoms/icon/icon.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Accordion Group',
@@ -12,7 +13,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Accordion Group** (`12502:12082`) — Count 3/5/9 · gap 11 · width 202 · exclusive expand.',
+          `Figma **💠 Accordion Group** ${figmaDocLink('12502:12082')} — Count 3/5/9 · gap 11 · width 202 · exclusive expand.`,
       },
     },
   },

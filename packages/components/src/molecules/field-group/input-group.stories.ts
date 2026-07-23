@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './named-groups.js'
 import '../../atoms/input/input.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Input Group',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Input Group** (`12406:14750`) — title/description · Size Medium/Small · Orientation V/H · gap 8/12.',
+          `Figma **💠 Input Group** ${figmaDocLink('12406:14750')} — title/description · Size Medium/Small · Orientation V/H · gap 8/12.`,
       },
     },
   },

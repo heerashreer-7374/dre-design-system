@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './named-groups.js'
 import '../dropdown/dropdown.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Dropdown Group',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Dropdown Group** (`12411:15623`) — title/description · Orientation Vertical/Horizontal.',
+          `Figma **💠 Dropdown Group** ${figmaDocLink('12411:15623')} — title/description · Orientation Vertical/Horizontal.`,
       },
     },
   },

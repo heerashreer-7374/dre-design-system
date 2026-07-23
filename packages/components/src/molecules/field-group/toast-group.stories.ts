@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './toast-group.js'
 import '../toast/toast.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Toast Group',
@@ -15,7 +16,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Toast Group** (`12385:13230`) — pad 16 · gap 8 · width 357 · Position Top-Right/Bottom-Right.',
+          `Figma **💠 Toast Group** ${figmaDocLink('12385:13230')} — pad 16 · gap 8 · width 357 · Position Top-Right/Bottom-Right.`,
       },
     },
   },

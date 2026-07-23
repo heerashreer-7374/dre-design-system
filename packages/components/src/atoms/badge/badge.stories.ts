@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './badge.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Badge',
@@ -15,7 +16,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Badge** Status Badge (`12301:9489`) — Success `#55b45a` · Warning `#edb51d` · Error `#d64333` · Info `#3187d8`.',
+          `Figma **⭐ Badge** Status Badge ${figmaDocLink('12301:9489')} — Success \`#55b45a\` · Warning \`#edb51d\` · Error \`#d64333\` · Info \`#3187d8\`.`,
       },
     },
   },

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './button.js'
 import '../icon/icon.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Button',
@@ -26,7 +27,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Button** (`12002:17139`) — Hierarchy · Size · State · Icon. Heights: Medium 30 · Small 26 · XSmall 24.',
+          `Figma **⭐ Button** ${figmaDocLink('12002:17139')} — Hierarchy · Size · State · Icon. Heights: Medium 30 · Small 26 · XSmall 24.`,
       },
     },
   },

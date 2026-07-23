@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './bottom-pane.js'
 import '../../atoms/icon/icon.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Patterns & Layouts/Bottom Pane',
@@ -11,7 +12,7 @@ const meta: Meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Maps to Figma Bottom Pane (`12585:36757`) — status bar + console / errors.',
+        component: `Maps to Figma Bottom Pane ${figmaDocLink('12585:36757')} — status bar + console / errors.`,
       },
     },
   },

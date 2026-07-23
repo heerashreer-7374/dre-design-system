@@ -4,6 +4,7 @@ import './right-pane.js'
 import '../../atoms/input/input.js'
 import '../../atoms/button/button.js'
 import '../../molecules/dropdown/dropdown.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Patterns & Layouts/Right Pane',
@@ -13,7 +14,7 @@ const meta: Meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Maps to Figma Right Pane (`12726:50864`) — property inspector.',
+        component: `Maps to Figma Right Pane ${figmaDocLink('12726:50864')} — property inspector.`,
       },
     },
   },

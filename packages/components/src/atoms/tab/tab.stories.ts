@@ -4,6 +4,7 @@ import './tab.js'
 import './tab-group.js'
 import '../icon/icon.js'
 import '../badge/badge.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Tab',
@@ -13,7 +14,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Tab** Tab Item (`12290:8325`) — Modes Default / With Icon / Badge / Both · Active indicator `#0d6dfd`.',
+          `Figma **⭐ Tab** Tab Item ${figmaDocLink('12290:8325')} — Modes Default / With Icon / Badge / Both · Active indicator \`#0d6dfd\`.`,
       },
     },
   },

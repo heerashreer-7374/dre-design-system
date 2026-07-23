@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './button-group.js'
 import '../../atoms/button/button.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Button Group',
@@ -17,7 +18,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Button Group** (`12045:29952`) — Size · Orientation · Style Uniform/Split · gap 8.',
+          `Figma **💠 Button Group** ${figmaDocLink('12045:29952')} — Size · Orientation · Style Uniform/Split · gap 8.`,
       },
     },
   },

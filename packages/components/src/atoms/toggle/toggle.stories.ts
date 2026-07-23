@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './toggle.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Toggle',
@@ -16,7 +17,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Toggle** (`10070:229`) — Small 26×18 · Medium 32×22 · On `#0d6dfd` · Off `#bdc0cf`.',
+          `Figma **⭐ Toggle** ${figmaDocLink('10070:229')} — Small 26×18 · Medium 32×22 · On \`#0d6dfd\` · Off \`#bdc0cf\`.`,
       },
     },
   },

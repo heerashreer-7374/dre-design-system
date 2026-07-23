@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './named-groups.js'
 import '../../atoms/radio/radio.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Radio Button Group',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Radio Button Group** (`12045:28528`) — title/description · Size · Orientation.',
+          `Figma **💠 Radio Button Group** ${figmaDocLink('12045:28528')} — title/description · Size · Orientation.`,
       },
     },
   },

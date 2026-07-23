@@ -6,8 +6,8 @@ import '../../atoms/icon/icon.js'
 export type DreTopBarTab = { id: string; label: string; active?: boolean; icon?: string }
 
 /**
- * DRE Top Bar — Figma Top Bar (`12422:16587`) / App Layout Composition.
- * Height 42 · bg `#f3f3f6` · active tab white r4 · trailing 20×20 icon buttons.
+ * DRE Top Bar — Figma (`12422:16587`), light appearance.
+ * Height 42 · bg `#f3f3f6` · active tab white r4 · trailing Settings + More.
  */
 @customElement('dre-top-bar')
 export class DreTopBar extends LitElement {
@@ -18,6 +18,7 @@ export class DreTopBar extends LitElement {
         display: block;
         width: 100%;
         font-family: var(--dre-font-family-primary, 'Zoho Puvi', system-ui, sans-serif);
+        color: #333842;
       }
 
       .bar {
@@ -36,8 +37,9 @@ export class DreTopBar extends LitElement {
         align-items: center;
         gap: 9px;
         padding-left: 10px;
-        height: 32px;
-        flex: 0 0 auto;
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
       }
 
       .brand {
@@ -45,6 +47,7 @@ export class DreTopBar extends LitElement {
         align-items: center;
         height: 16px;
         line-height: 0;
+        flex: 0 0 auto;
       }
 
       .brand-logo {
@@ -63,11 +66,10 @@ export class DreTopBar extends LitElement {
       .tabs {
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 0;
         flex: 1;
         min-width: 0;
         overflow-x: auto;
-        padding-inline: 0 8px;
       }
 
       .tab {
@@ -75,26 +77,28 @@ export class DreTopBar extends LitElement {
         align-items: center;
         gap: 6px;
         height: 32px;
-        padding: 0 8px 0 12px;
+        padding: 0 12px;
         border: 0;
         border-radius: 4px;
         background: transparent;
-        color: #5d6481;
+        color: #59616e;
         font: inherit;
         font-size: 12px;
-        line-height: 14px;
+        font-weight: 400;
+        line-height: normal;
         cursor: pointer;
         white-space: nowrap;
       }
 
       .tab:hover {
-        color: #13141a;
-        background: rgb(255 255 255 / 55%);
+        color: #333842;
       }
 
       .tab[aria-selected='true'] {
         background: #ffffff;
         color: #333842;
+        font-weight: 500;
+        padding: 0 8px 0 12px;
       }
 
       .tab-icon {
@@ -104,7 +108,7 @@ export class DreTopBar extends LitElement {
       }
 
       .tab-close {
-        display: inline-flex;
+        display: none;
         align-items: center;
         justify-content: center;
         width: 12px;
@@ -112,16 +116,24 @@ export class DreTopBar extends LitElement {
         border: 0;
         padding: 0;
         background: transparent;
-        color: #727999;
+        color: inherit;
         cursor: pointer;
         line-height: 0;
+        opacity: 0.7;
+      }
+
+      .tab[aria-selected='true'] .tab-close {
+        display: inline-flex;
+      }
+
+      .tab-close:hover {
+        opacity: 1;
       }
 
       .trailing {
         display: inline-flex;
         align-items: center;
         gap: 4px;
-        height: 36px;
         padding: 8px 12px 8px 8px;
         flex: 0 0 auto;
         box-sizing: border-box;
@@ -143,13 +155,13 @@ export class DreTopBar extends LitElement {
       }
 
       .icon-btn:hover {
-        background: rgb(0 0 0 / 4%);
+        background: rgb(0 0 0 / 6%);
       }
     `,
   ]
 
   @property({ attribute: false })
-  tabs: DreTopBarTab[] = [{ id: '1', label: 'Settings', active: true, icon: 'settings' }]
+  tabs: DreTopBarTab[] = [{ id: 'settings', label: 'Settings', active: true, icon: 'settings' }]
 
   @property({ attribute: 'active-tab' })
   activeTab = ''
@@ -167,6 +179,13 @@ export class DreTopBar extends LitElement {
         composed: true,
       }),
     )
+  }
+
+  #iconFor(tab: DreTopBarTab) {
+    if (tab.icon) return tab.icon
+    const label = tab.label.toLowerCase()
+    if (label.includes('setting')) return 'settings'
+    return 'code'
   }
 
   override render() {
@@ -188,40 +207,45 @@ export class DreTopBar extends LitElement {
           </slot>
           <span class="divider" aria-hidden="true"></span>
           <div class="tabs" part="tabs" role="tablist">
-            ${this.tabs.map(
-              (tab) => html`
+            ${this.tabs.map((tab) => {
+              const selected = tab.id === active
+              return html`
                 <button
                   class="tab"
                   type="button"
                   role="tab"
-                  aria-selected=${tab.id === active ? 'true' : 'false'}
+                  aria-selected=${selected ? 'true' : 'false'}
                   @click=${() => this.#select(tab.id)}
                 >
-                  ${tab.icon
-                    ? html`<span class="tab-icon"><dre-icon name=${tab.icon} size="16"></dre-icon></span>`
-                    : null}
-                  ${tab.label}
-                  <span
-                    class="tab-close"
-                    role="button"
-                    aria-label="Close ${tab.label}"
-                    @click=${(e: Event) => e.stopPropagation()}
-                  >
-                    <dre-icon name="x" size="10"></dre-icon>
+                  <span class="tab-icon">
+                    <dre-icon name=${this.#iconFor(tab)} size="16"></dre-icon>
                   </span>
+                  ${tab.label}
+                  ${selected
+                    ? html`
+                        <span
+                          class="tab-close"
+                          role="button"
+                          aria-label="Close ${tab.label}"
+                          @click=${(e: Event) => e.stopPropagation()}
+                        >
+                          <dre-icon name="close" size="12"></dre-icon>
+                        </span>
+                      `
+                    : null}
                 </button>
-              `,
-            )}
+              `
+            })}
             <slot></slot>
           </div>
         </div>
         <div class="trailing" part="trailing">
           <slot name="trailing">
             <button class="icon-btn" type="button" aria-label="Settings">
-              <dre-icon name="settings" size="14"></dre-icon>
+              <dre-icon name="settings" size="16"></dre-icon>
             </button>
             <button class="icon-btn" type="button" aria-label="More">
-              <dre-icon name="more" size="14"></dre-icon>
+              <dre-icon name="more" size="16"></dre-icon>
             </button>
           </slot>
         </div>

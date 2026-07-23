@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './toast.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Toast Message',
@@ -14,7 +15,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Toast Message** (`10110:280`) — 314×48 · pad 16 · radius 4 · Success/Warning/Error/Info fills.',
+          `Figma **⭐ Toast Message** ${figmaDocLink('10110:280')} — 314×48 · pad 16 · radius 4 · Success/Warning/Error/Info fills.`,
       },
     },
   },

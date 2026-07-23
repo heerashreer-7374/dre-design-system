@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './top-bar.js'
-import '../../atoms/button/button.js'
-import '../../atoms/badge/badge.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Patterns & Layouts/Top Bar',
@@ -12,7 +11,8 @@ const meta: Meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Maps to Figma Top Bar (`12422:16587`) — file tabs + trailing actions.',
+        component:
+          `Maps to Figma Top Bar ${figmaDocLink('12422:16587')} — Deluge logo, file tabs, Settings + More. Light appearance; One / Two / Many tabs.`,
       },
     },
   },
@@ -21,26 +21,36 @@ export default meta
 type Story = StoryObj
 
 export const OneTab: Story = {
+  name: 'One Tab',
   render: () => html`
-    <dre-top-bar .tabs=${[{ id: '1', label: 'code file.js', active: true }]}>
-      <dre-badge slot="trailing" tone="brand">Settings</dre-badge>
-    </dre-top-bar>
+    <dre-top-bar
+      .tabs=${[{ id: 'settings', label: 'Settings', active: true, icon: 'settings' }]}
+    ></dre-top-bar>
+  `,
+}
+
+export const TwoTabs: Story = {
+  name: 'Two Tabs',
+  render: () => html`
+    <dre-top-bar
+      .tabs=${[
+        { id: 'file', label: 'code file.js', icon: 'code' },
+        { id: 'settings', label: 'Settings', active: true, icon: 'settings' },
+      ]}
+    ></dre-top-bar>
   `,
 }
 
 export const ManyTabs: Story = {
-  name: 'Features / Many tabs',
+  name: 'Many Tabs',
   render: () => html`
     <dre-top-bar
       .tabs=${[
-        { id: '1', label: 'main.dg', active: true },
-        { id: '2', label: 'helpers.dg' },
-        { id: '3', label: 'config.json' },
-        { id: '4', label: 'README.md' },
+        { id: '1', label: 'code file.js', icon: 'code' },
+        { id: '2', label: 'function.dg', icon: 'code' },
+        { id: '3', label: 'workflow.dg', icon: 'code' },
+        { id: 'settings', label: 'Settings', active: true, icon: 'settings' },
       ]}
-    >
-      <span slot="leading" style="font-size:12px;color:var(--dre-color-text-subtle);">DRE</span>
-      <dre-button slot="trailing" hierarchy="ghost" size="xsmall">Share</dre-button>
-    </dre-top-bar>
+    ></dre-top-bar>
   `,
 }

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './accordion.js'
 import '../../atoms/icon/icon.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Accordion',
@@ -11,7 +12,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Accordion** (`12502:11281`) — Collapsed/Expanded · header 14px · block items `#f7f7f9` / `#e6e8ed` r6.',
+          `Figma **⭐ Accordion** ${figmaDocLink('12502:11281')} — Collapsed/Expanded · header 14px · block items \`#f7f7f9\` / \`#e6e8ed\` r6.`,
       },
     },
   },

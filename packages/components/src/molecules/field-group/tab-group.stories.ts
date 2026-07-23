@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import '../../atoms/tab/tab.js'
 import '../../atoms/tab/tab-group.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Assembled Components/Tab Group',
@@ -11,7 +12,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **💠 Tab Group** (`12372:12622`) — Style Default/Enclosed · Count 3/5 · divider `#e0e0e0`.',
+          `Figma **💠 Tab Group** ${figmaDocLink('12372:12622')} — Style Default/Enclosed · Count 3/5 · divider \`#e0e0e0\`.`,
       },
     },
   },

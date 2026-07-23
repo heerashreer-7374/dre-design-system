@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './checkbox.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Checkbox',
@@ -17,7 +18,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Checkbox** (`10048:396`) — Small 8×8 r2 · Medium 14×14 r4 · Selected `#0d6dfd`.',
+          `Figma **⭐ Checkbox** ${figmaDocLink('10048:396')} — Small 8×8 r2 · Medium 14×14 r4 · Selected \`#0d6dfd\`.`,
       },
     },
   },

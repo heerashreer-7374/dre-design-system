@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './dropdown.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Dropdown',
@@ -10,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Maps to Figma Input Dropdown (`10280:148`), Dropdown menu (`10289:952`), and `_Dropdown list item` (`10261:398`).',
+          `Maps to Figma Input Dropdown ${figmaDocLink('10280:148')}, Dropdown menu ${figmaDocLink('10289:952')}, and \`_Dropdown list item\` ${figmaDocLink('10261:398')}.`,
       },
     },
   },

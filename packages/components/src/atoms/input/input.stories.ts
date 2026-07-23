@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './input.js'
 import '../icon/icon.js'
+import { figmaDocLink } from '../../shared/figma.js'
 
 const meta: Meta = {
   title: 'Single Components/Input Field',
@@ -26,7 +27,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Figma **⭐ Input Field** (`10209:416`) — Small h24 · Medium h34 · radius 4 · stroke `#bdc0cf`.',
+          `Figma **⭐ Input Field** ${figmaDocLink('10209:416')} — Small h24 · Medium h34 · radius 4 · stroke \`#bdc0cf\`.`,
       },
     },
   },

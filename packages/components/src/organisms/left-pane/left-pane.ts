@@ -87,6 +87,7 @@ export class DreLeftPane extends LitElement {
         width: 210px;
         flex: 0 0 210px;
         min-height: 0;
+        margin-left: 0;
         background: #ffffff;
         border-radius: 4px;
         box-sizing: border-box;
@@ -94,6 +95,8 @@ export class DreLeftPane extends LitElement {
 
       :host([state='extended']) .panel {
         display: flex;
+        /* Figma 12478:5025 — 8px between rail and Actions panel */
+        margin-left: 8px;
       }
 
       :host([separated]) .panel {
