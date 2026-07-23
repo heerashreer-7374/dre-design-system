@@ -93,29 +93,6 @@ const shellCss = `
     border-top: 0;
     border-bottom: 0;
   }
-  .editor-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    padding: 8px 16px;
-    background: #f3f3f6;
-    box-sizing: border-box;
-  }
-  .active-file {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    line-height: 16px;
-    color: #13141a;
-    font-weight: 500;
-  }
-  .editor-actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
   .editor-body {
     flex: 1;
     min-height: 0;
@@ -221,16 +198,6 @@ export const IDE: Story = {
         <dre-left-pane state="collapsed"></dre-left-pane>
 
         <main class="editor" aria-label="Code editor">
-          <div class="editor-header">
-            <div class="active-file">
-              <dre-icon name="file" size="14"></dre-icon>
-              <span>on_success.dg</span>
-            </div>
-            <div class="editor-actions">
-              <dre-button hierarchy="secondary" size="xsmall">Button</dre-button>
-              <dre-button hierarchy="primary" size="xsmall">Button</dre-button>
-            </div>
-          </div>
           <div class="editor-body">
             <dre-monaco-editor language="deluge" .value=${DELUGE_SAMPLE}></dre-monaco-editor>
           </div>
