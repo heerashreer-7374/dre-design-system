@@ -17,15 +17,9 @@ import '../../molecules/dropdown/dropdown.js'
  */
 const meta: Meta = {
   title: 'App Layout Composition',
-  tags: ['autodocs'],
+  // Composition shell — use the IDE story canvas (autodocs renders blank without a component).
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      description: {
-        component:
-          'Full IDE shell composed from **Patterns & Layouts**: Top Bar, Secondary Top Bar, Left Pane, Right Pane, Bottom Pane — with Monaco editor in the center.',
-      },
-    },
   },
 }
 export default meta
