@@ -1,0 +1,1 @@
+const r="https://www.figma.com/design/UnFbmt5yovBqr4tBNjuNx9/DRE-Design-System---AI-Readable";function n(e){return`${r}?node-id=${e.replace(/:/g,"-")}`}function o(e){return`<a href="${n(e)}" target="_blank" rel="noopener noreferrer">${e}</a>`}export{o as f};
